@@ -3,9 +3,7 @@ import axios from 'axios';
 
 function* registerBar(action) {
   try {
-    console.log(action.payload)
     yield axios.post('/api/bar/register', action.payload);
-
   } catch (error) {
     console.log('Error with Bar Registration', error);
   }

@@ -16,6 +16,7 @@ import BarRegister from '../BarRegister/BarRegister';
 import UserRegister from '../UserRegister/UserRegister';
 import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
+import AddTips from '../AddTips/AddTips';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function App() {
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/register-bar">
-              {user.id && user.is_admin ? <Redirect to="/user" /> : <BarRegister />}
+              {user.id && !user.is_admin ? <Redirect to="/user" /> : <BarRegister />}
             </ProtectedRoute>
 
             <Route exact path="/register-user">
@@ -52,6 +53,9 @@ function App() {
             {user.id ? <Redirect to="/user" /> : <LandingPage />}
             </Route>
 
+            <Route exact path="/add-tips">
+              <AddTips />
+            </Route>
 
           </Switch>
         </Router>

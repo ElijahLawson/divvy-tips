@@ -1,17 +1,26 @@
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../NavBar/NavBar";
+import { DateTime } from "luxon";
 
 function UserPage() {
 
     const user = useSelector(store => store.user);
-    const history = useHistory();
+    const shifts = useSelector(store => store.shifts);
 
-    console.log(user);
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const onAddTips = () => {
+        dispatch({
+            type: 'SAGA/GET_OR_CREATE_SHIFT'
+        })
 
+        history.push('/add-tips');
     }
+
+    console.log(shifts);
 
     const onRunMoney = () => {
 
@@ -30,6 +39,7 @@ function UserPage() {
                 <p>Weekly Hours: </p>
                 <p>Weekly Tips: </p>
             </div>
+
             <div>
                 <button onClick={onAddTips}>Add Tips</button>
             </div>
@@ -40,8 +50,6 @@ function UserPage() {
                 <button onClick={onShiftHistory}>Shift History</button>
             </div>
         </div>
-
-
     )
 }
 

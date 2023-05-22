@@ -5,6 +5,6 @@ Things I've done (in order):
 - Created new bar registration page
 - Created user registration page
 - Created Login Page
-- Created Logout Page
+- Created Logout Button
 - Created Nav Bar
 - 
