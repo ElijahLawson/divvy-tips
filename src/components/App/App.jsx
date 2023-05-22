@@ -8,15 +8,14 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
 import BarRegister from '../BarRegister/BarRegister';
 import UserRegister from '../UserRegister/UserRegister';
 import UserPage from '../UserPage/UserPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,11 +37,15 @@ function App() {
             </ProtectedRoute>
 
             <ProtectedRoute exact path="/register-bar">
-              <BarRegister />
+              {user.id && user.is_admin ? <Redirect to="/user" /> : <BarRegister />}
             </ProtectedRoute>
 
             <Route exact path="/register-user">
-              {user.id && user.is_admin ? <Redirect to="/user" /> : <UserRegister />}
+              {user.id ? <Redirect to="/user" /> : <UserRegister />}
+            </Route>
+
+            <Route exact path="/login">
+              {user.id ? <Redirect to="/user" /> : <LoginPage />}
             </Route>
 
             <Route exact path="/home">
