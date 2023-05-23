@@ -1,0 +1,107 @@
+Date : 2023-05-22 19:15:36
+Directory : /Users/elijahlawson/Desktop/Prime/divvy-tips
+Total : 49 files,  1537 codes, 198 comments, 313 blanks, all 2048 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         10 |        547 |         18 |        100 |        665 |
+| JavaScript     |         29 |        546 |        158 |        144 |        848 |
+| JSON           |          3 |        193 |          0 |          2 |        195 |
+| Markdown       |          3 |        104 |          0 |         40 |        144 |
+| CSS            |          1 |         82 |         13 |         18 |        113 |
+| SQL            |          1 |         34 |          4 |          6 |         44 |
+| YAML           |          1 |         16 |          5 |          1 |         22 |
+| HTML           |          1 |         15 |          0 |          2 |         17 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                          | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                             |         49 |      1,537 |        198 |        313 |      2,048 |
+| . (Files)                                                                                     |          7 |        331 |          4 |         48 |        383 |
+| .github                                                                                       |          1 |         16 |          5 |          1 |         22 |
+| public                                                                                        |          1 |         15 |          0 |          2 |         17 |
+| server                                                                                        |         12 |        276 |         86 |         74 |        436 |
+| server (Files)                                                                                |          1 |         24 |          8 |         11 |         43 |
+| server/constants                                                                              |          1 |         17 |          0 |          7 |         24 |
+| server/modules                                                                                |          4 |         59 |         39 |         18 |        116 |
+| server/routes                                                                                 |          5 |        132 |         23 |         32 |        187 |
+| server/strategies                                                                             |          1 |         44 |         16 |          6 |         66 |
+| src                                                                                           |         28 |        899 |        103 |        188 |      1,190 |
+| src (Files)                                                                                   |          1 |         13 |          0 |          5 |         18 |
+| src/components                                                                                |         11 |        629 |         31 |        118 |        778 |
+| src/components/AddTips                                                                        |          1 |        116 |          0 |         18 |        134 |
+| src/components/App                                                                            |          2 |        133 |         13 |         34 |        180 |
+| src/components/BarRegister                                                                    |          1 |         79 |          0 |          7 |         86 |
+| src/components/LandingPage                                                                    |          1 |         38 |          0 |         11 |         49 |
+| src/components/LogOutButton                                                                   |          1 |         14 |          3 |          2 |         19 |
+| src/components/LoginPage                                                                      |          1 |         65 |          0 |          6 |         71 |
+| src/components/NavBar                                                                         |          1 |         16 |          0 |          3 |         19 |
+| src/components/ProtectedRoute                                                                 |          1 |         20 |         15 |          7 |         42 |
+| src/components/UserPage                                                                       |          1 |         41 |          0 |         12 |         53 |
+| src/components/UserRegister                                                                   |          1 |        107 |          0 |         18 |        125 |
+| src/hooks                                                                                     |          1 |          5 |         10 |          6 |         21 |
+| src/redux                                                                                     |         15 |        252 |         62 |         59 |        373 |
+| src/redux (Files)                                                                             |          1 |         15 |          8 |          6 |         29 |
+| src/redux/reducers                                                                            |          6 |         81 |         14 |         12 |        107 |
+| src/redux/sagas                                                                               |          8 |        156 |         40 |         41 |        237 |
++-----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                      | language       | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/.github/dependabot.yml                           | YAML           |         16 |          5 |          1 |         22 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/Notes.md                                         | Markdown       |         10 |          0 |          0 |         10 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/PostmanPrimeSoloRoutes.json                      | JSON           |         77 |          0 |          0 |         77 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/PostmanPrimeSoloRoutesv2.json                    | JSON           |         62 |          0 |          1 |         63 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/README.md                                        | Markdown       |         83 |          0 |         39 |        122 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/TODO.md                                          | Markdown       |         11 |          0 |          1 |         12 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/database.sql                                     | SQL            |         34 |          4 |          6 |         44 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/package.json                                     | JSON           |         54 |          0 |          1 |         55 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/public/index.html                                | HTML           |         15 |          0 |          2 |         17 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/constants/warnings.js                     | JavaScript     |         17 |          0 |          7 |         24 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/modules/authentication-middleware.js      | JavaScript     |          8 |          4 |          2 |         14 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/modules/encryption.js                     | JavaScript     |         13 |         10 |          6 |         29 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/modules/pool.js                           | JavaScript     |         18 |         14 |          4 |         36 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/modules/session-middleware.js             | JavaScript     |         20 |         11 |          6 |         37 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/bar.router.js                      | JavaScript     |         32 |          1 |          6 |         39 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/shift.router.js                    | JavaScript     |         24 |          0 |          3 |         27 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/shiftTips.router.js                | JavaScript     |         31 |          3 |          9 |         43 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/template.router.js                 | JavaScript     |          8 |          8 |          4 |         20 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/user.router.js                     | JavaScript     |         37 |         11 |         10 |         58 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/server.js                                 | JavaScript     |         24 |          8 |         11 |         43 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/strategies/user.strategy.js               | JavaScript     |         44 |         16 |          6 |         66 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/AddTips/AddTips.jsx               | JavaScript JSX |        116 |          0 |         18 |        134 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/App/App.css                       | CSS            |         82 |         13 |         18 |        113 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/App/App.jsx                       | JavaScript JSX |         51 |          0 |         16 |         67 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/BarRegister/BarRegister.jsx       | JavaScript JSX |         79 |          0 |          7 |         86 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/LandingPage/LandingPage.jsx       | JavaScript JSX |         38 |          0 |         11 |         49 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/LogOutButton/LogOutButton.jsx     | JavaScript JSX |         14 |          3 |          2 |         19 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/LoginPage/LoginPage.jsx           | JavaScript JSX |         65 |          0 |          6 |         71 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/NavBar/NavBar.jsx                 | JavaScript JSX |         16 |          0 |          3 |         19 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/ProtectedRoute/ProtectedRoute.jsx | JavaScript JSX |         20 |         15 |          7 |         42 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/UserPage/UserPage.jsx             | JavaScript JSX |         41 |          0 |         12 |         53 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/UserRegister/UserRegister.jsx     | JavaScript JSX |        107 |          0 |         18 |        125 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/hooks/useReduxStore.js                       | JavaScript     |          5 |         10 |          6 |         21 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/index.js                                     | JavaScript     |         13 |          0 |          5 |         18 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/_root.reducer.js              | JavaScript     |         12 |          5 |          4 |         21 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/bar.reducer.js                | JavaScript     |         10 |          0 |          1 |         11 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/errors.reducer.js             | JavaScript     |         31 |          7 |          4 |         42 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/shiftTips.reducer.js          | JavaScript     |          8 |          0 |          0 |          8 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/shifts.reducer.js             | JavaScript     |          9 |          0 |          1 |         10 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/user.reducer.js               | JavaScript     |         11 |          2 |          2 |         15 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/_root.saga.js                    | JavaScript     |         19 |          6 |          4 |         29 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/barRegistration.saga.js          | JavaScript     |         13 |          0 |          4 |         17 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/bars.saga.js                     | JavaScript     |         14 |          0 |          3 |         17 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/login.saga.js                    | JavaScript     |         37 |         20 |         10 |         67 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/registration.saga.js             | JavaScript     |         17 |          6 |          7 |         30 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/shiftTips.saga.js                | JavaScript     |         23 |          0 |          4 |         27 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/shifts.saga.js                   | JavaScript     |         15 |          0 |          3 |         18 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/user.saga.js                     | JavaScript     |         18 |          8 |          6 |         32 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/store.js                               | JavaScript     |         15 |          8 |          6 |         29 |
+| Total                                                                                         |                |      1,537 |        198 |        313 |      2,048 |
++-----------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

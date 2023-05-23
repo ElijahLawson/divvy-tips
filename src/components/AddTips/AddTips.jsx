@@ -50,7 +50,7 @@ function AddTips() {
             payload: shift_tips
         })
 
-        history.push('/tip-entered');
+        history.push('/confirm-tips')
     }
 
     return(

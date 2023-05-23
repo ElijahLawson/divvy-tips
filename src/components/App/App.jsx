@@ -17,6 +17,7 @@ import UserRegister from '../UserRegister/UserRegister';
 import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
 import AddTips from '../AddTips/AddTips';
+import TipConfirmation from '../TipConfirmation/TipConfirmation';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,10 @@ function App() {
 
             <ProtectedRoute exact path="/add-tips">
               <AddTips />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path='/confirm-tips'>
+              <TipConfirmation />
             </ProtectedRoute>
 
           </Switch>
