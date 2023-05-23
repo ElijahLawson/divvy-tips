@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import LoginPage from '../LoginPage/LoginPage';
 import AddTips from '../AddTips/AddTips';
 import TipConfirmation from '../TipConfirmation/TipConfirmation';
+import ShiftSetup from '../ShiftSetup/ShiftSetup';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,9 +39,9 @@ function App() {
               <UserPage />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path="/register-bar">
+            <Route exact path="/register-bar">
               {user.id && !user.is_admin ? <Redirect to="/user" /> : <BarRegister />}
-            </ProtectedRoute>
+            </Route>
 
             <Route exact path="/register-user">
               {user.id ? <Redirect to="/user" /> : <UserRegister />}
@@ -60,6 +61,10 @@ function App() {
 
             <ProtectedRoute exact path='/confirm-tips'>
               <TipConfirmation />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path='/shift-setup'>
+              <ShiftSetup />
             </ProtectedRoute>
 
           </Switch>

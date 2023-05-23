@@ -1,10 +1,10 @@
-const shiftTipsReducer = (state=[], action) => {
+const drawersReducer = (state=[], action) => {
     switch (action.type) {
-        case 'SET_SHIFT_TIPS':
+        case 'SET_DRAWERS':
             return [...state, action.payload];
         default:
             return state;
     }
 }
 
-export default shiftTipsReducer;
+export default drawersReducer;

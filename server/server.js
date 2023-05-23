@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const barRouter = require('./routes/bar.router');
 const shiftsRouter = require('./routes/shift.router');
 const shiftTipsRouter = require('./routes/shiftTips.router')
+const drawersRouter = require('./routes/drawers.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/bar', barRouter);
 app.use('/api/shift', shiftsRouter);
 app.use('/api/shift-tips', shiftTipsRouter);
+app.use('/api/drawers/', drawersRouter);
 
 // Serve static files
 app.use(express.static('build'));

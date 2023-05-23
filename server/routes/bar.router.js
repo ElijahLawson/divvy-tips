@@ -7,7 +7,13 @@ const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', (req, res) => {
-    pool.query('SELECT * FROM location;')
+    user_id = req.user.id
+    pool.query(`SELECT location.id, 
+        location.name, 
+        location.city, 
+        location.state,
+        location.barback_cut
+         FROM location JOIN "user" ON location.id="user".location_id WHERE "user".id=${user_id};`)
     .then((results) => {
         res.send(results.rows)
     })

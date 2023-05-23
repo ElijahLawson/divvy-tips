@@ -6,6 +6,8 @@ import barRegistrationSaga from './barRegistration.saga';
 import barsSaga from './bars.saga';
 import shiftsSaga from './shifts.saga';
 import shiftTipsSaga from './shiftTips.saga';
+import drawersSaga from './drawers.saga';
+
 
 
 // rootSaga is the primary saga.
@@ -23,6 +25,7 @@ export default function* rootSaga() {
     barRegistrationSaga(),
     barsSaga(),
     shiftsSaga(),
-    shiftTipsSaga()
+    shiftTipsSaga(),
+    drawersSaga()
   ]);
 }

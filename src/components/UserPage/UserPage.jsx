@@ -6,10 +6,15 @@ import NavBar from "../NavBar/NavBar";
 function UserPage() {
 
     const user = useSelector(store => store.user);
-    const shifts = useSelector(store => store.shifts);
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({
+          type: 'SAGA/FETCH_BARS'
+        })
+      }, [dispatch])
 
     const onAddTips = () => {
         dispatch({
@@ -19,8 +24,9 @@ function UserPage() {
         history.push('/add-tips');
     }
 
-    const onRunMoney = () => {
 
+    const onRunMoney = () => {
+        history.push('/shift-setup');
     }
 
     const onShiftHistory = () => {

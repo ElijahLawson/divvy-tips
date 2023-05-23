@@ -5,8 +5,16 @@ const {
   } = require('../modules/authentication-middleware');
 const router = express.Router();
 
-router.get('/', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM shift_tips WHERE shift_id=`)
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    const shift_id = req.params.id;
+
+    pool.query(`SELECT * FROM shift_tips WHERE "shift_id"=${shift_id}`)
+    .then(results => {
+        res.send(results.rows);
+    })
+    .catch(err => {
+        console.log('Error on DB get query to /api/shift-tips', err);
+    })
 })
 
 router.post('/add-tip', rejectUnauthenticated, (req, res) => {

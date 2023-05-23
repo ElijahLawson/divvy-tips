@@ -1,9 +1,10 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-function *fetchTips() {
+function* fetchTips(action) {
     try{
-        const response = yield axios.get('/api/shift-tips');
+        const response = yield axios.get(`/api/shift-tips/${action.payload}`);
+        
         yield put({ type: 'SET_SHIFT_TIPS', payload: response.data })
     } catch (error) {
         console.log('Error with Shift Tip Get request to Server', error);
