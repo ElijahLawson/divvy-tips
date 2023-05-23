@@ -53,9 +53,9 @@ function App() {
             {user.id ? <Redirect to="/user" /> : <LandingPage />}
             </Route>
 
-            <Route exact path="/add-tips">
+            <ProtectedRoute exact path="/add-tips">
               <AddTips />
-            </Route>
+            </ProtectedRoute>
 
           </Switch>
         </Router>

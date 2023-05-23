@@ -11,7 +11,6 @@ function NavBar() {
       <Link to="/home">
         <h2 className="nav-title">Divvy Tips</h2>
       </Link>
-
       { user.id && (<LogOutButton />) }
     </div>
   );

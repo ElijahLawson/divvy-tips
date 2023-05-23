@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../NavBar/NavBar";
+import { DateTime } from "luxon";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function AddTips() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
+    const shift = useSelector(store => store.shifts);
 
     const [timeInInput, setTimeInInput] = useState('');
     const [timeOutInput, setTimeOutInput] = useState('');
@@ -12,16 +17,52 @@ function AddTips() {
     const [breakTimeInput, setBreakTimeInput] = useState(0)
     const [chargedTips, setChargedTips] = useState(0);
 
+    const calculateTotalHours = () => {
+        const timeIn = DateTime.fromISO(timeInInput);
+        const timeOut = DateTime.fromISO(timeOutInput);
+        
+        let totalHours = 0;
+
+        if (timeOut.diff(timeIn).as('hours') < 0) {
+            totalHours += timeOut.diff(timeIn).as('hours') + 24
+        } else {
+            totalHours += timeOut.diff(timeIn).as('hours');
+        }
+
+        totalHours -= (breakTimeInput / 60);
+
+       return totalHours;
+    }
+
+    const onAddTips = (event) => {
+        event.preventDefault();
+        const totalHours = calculateTotalHours();
+        const shift_tips = {
+            timeIn: timeInInput,
+            timeOut: timeOutInput,
+            totalHours: totalHours,
+            total_tips: chargedTips,
+            shift_id: shift.todays_shift_id
+        }
+
+        dispatch({
+            type: 'SAGA/ADD_TIPS',
+            payload: shift_tips
+        })
+
+        history.push('/tip-entered');
+    }
+
     return(
         <div>
             <NavBar />
             <div>
-                <form>
+                <form onSubmit={onAddTips}>
                     <div>
                         <label>
                             Time In: 
                             <input
-                                type="text"
+                                type="time"
                                 name="timeIn"
                                 value={timeInInput}
                                 required
@@ -34,7 +75,7 @@ function AddTips() {
                         <label>
                             Time Out: 
                             <input
-                                type="text"
+                                type="time"
                                 name="timeOut"
                                 value={timeOutInput}
                                 required
@@ -80,6 +121,9 @@ function AddTips() {
                                 onChange={event => setChargedTips(event.target.value)}
                             />
                         </label>
+                    </div>
+                    <div>
+                        <button type="submit">Add Tips!</button>
                     </div>
                 </form>
             </div>

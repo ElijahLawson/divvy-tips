@@ -2,7 +2,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../NavBar/NavBar";
-import { DateTime } from "luxon";
 
 function UserPage() {
 
@@ -19,8 +18,6 @@ function UserPage() {
 
         history.push('/add-tips');
     }
-
-    console.log(shifts);
 
     const onRunMoney = () => {
 
