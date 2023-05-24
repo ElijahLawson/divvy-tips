@@ -21,6 +21,7 @@ import TipConfirmation from '../TipConfirmation/TipConfirmation';
 import ShiftSetup from '../ShiftSetup/ShiftSetup';
 import HoursConfirmation from '../HoursConfirmation/HoursConfirmation';
 import TipsConfirmation from '../TipsConfirmation/TipsConfirmation';
+import TipOutPage from '../TipOutPage/TipOutPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,10 @@ function App() {
 
             <ProtectedRoute exact path='/tips-edit'>
               <TipsConfirmation />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path='/tip-out'>
+              <TipOutPage />
             </ProtectedRoute>
 
           </Switch>

@@ -25,12 +25,12 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
     }
 })
 
-router.put('/update/:id', rejectUnauthenticated, (req, res) => {
+router.put('/update-1/:id', rejectUnauthenticated, (req, res) => {
 
     const totalCash = req.body.totalCash;
     const barbackCheck = req.body.barbackCheck;
     const runner_id = req.body.runner_id;
-    const shift_id = req.body.id;
+    const shift_id = req.params.id;
 
     sqlQuery = `UPDATE shifts SET total_cash=$1, barback_check=$2, runner_id=$3 where shifts.id=$4`;
     sqlValues = [totalCash, barbackCheck, runner_id, shift_id]
@@ -39,6 +39,20 @@ router.put('/update/:id', rejectUnauthenticated, (req, res) => {
     .then(() => res.sendStatus(200))
     .catch(err => {
         console.log('Cash and Barback Check PUT request to DB failed', err)
+    })
+})
+
+router.put('/update-2/:id', rejectUnauthenticated, (req, res) => {
+    const totalHours = req.body.totalHours;
+    const shift_id = req.params.id;
+
+    sqlQuery = `UPDATE shifts SET total_hours=$1 WHERE shifts.id=$2`;
+    sqlValues = [totalHours, shift_id];
+
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch(err => {
+        console.log('Total Hours PUT request to DB failed', err);
     })
 })
 
