@@ -19,6 +19,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import AddTips from '../AddTips/AddTips';
 import TipConfirmation from '../TipConfirmation/TipConfirmation';
 import ShiftSetup from '../ShiftSetup/ShiftSetup';
+import ShiftConfirmation from '../ShiftConfirmation/ShiftConfirmation';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: 'SAGA/FETCH_ALL_BARS'});
   }, [dispatch]);
 
   return (
@@ -53,7 +55,7 @@ function App() {
 
             <Route exact path="/home">
             {user.id ? <Redirect to="/user" /> : <LandingPage />}
-            </Route>
+            </Route>f
 
             <ProtectedRoute exact path="/add-tips">
               <AddTips />
@@ -65,6 +67,10 @@ function App() {
 
             <ProtectedRoute exact path='/shift-setup'>
               <ShiftSetup />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path='/shift-edit/'>
+              <ShiftConfirmation />
             </ProtectedRoute>
 
           </Switch>

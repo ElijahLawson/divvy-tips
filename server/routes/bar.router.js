@@ -6,7 +6,7 @@ const {
 const router = express.Router();
 
 // Handles Ajax request for user information if user is authenticated
-router.get('/', (req, res) => {
+router.get('/user-bar', (req, res) => {
     user_id = req.user.id
     pool.query(`SELECT location.id, 
         location.name, 
@@ -19,6 +19,18 @@ router.get('/', (req, res) => {
     })
     .catch((err) => {
         console.log('error', err);
+        res.sendStatus(500)
+    })
+})
+
+router.get('/all-bars', (req, res) => {
+    pool.query('SELECT * FROM location')
+    .then((results) => {
+        res.send(results.rows)
+    })
+    .catch(err => {
+        console.log('Error')
+        res.sendStatus(500)
     })
 })
 

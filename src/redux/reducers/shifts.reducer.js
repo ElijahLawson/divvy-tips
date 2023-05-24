@@ -1,4 +1,4 @@
-const shiftsReducer = (state={}, action) => {
+const shiftsReducer = (state=[], action) => {
     switch (action.type) {
         case 'SET_SHIFTS':
             return action.payload;

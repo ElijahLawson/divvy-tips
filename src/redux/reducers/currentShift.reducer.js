@@ -1,10 +1,10 @@
-const shiftTipsReducer = (state=[], action) => {
+const currentShift = (state=[], action) => {
     switch (action.type) {
-        case 'SET_SHIFT_TIPS':
+        case 'SET_CURRENT_SHIFT':
             return action.payload;
         default:
             return state;
     }
 }
 
-export default shiftTipsReducer;
+export default currentShift;

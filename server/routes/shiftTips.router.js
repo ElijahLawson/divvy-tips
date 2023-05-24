@@ -5,10 +5,10 @@ const {
   } = require('../modules/authentication-middleware');
 const router = express.Router();
 
-router.get('/:id', rejectUnauthenticated, (req, res) => {
-    const shift_id = req.params.id;
+router.get('/user-tips/:id', rejectUnauthenticated, (req, res) => {
+    const user_id = req.params.id;
 
-    pool.query(`SELECT * FROM shift_tips WHERE "shift_id"=${shift_id}`)
+    pool.query(`SELECT * FROM shift_tips WHERE "user_id"=${user_id}`)
     .then(results => {
         res.send(results.rows);
     })
@@ -17,28 +17,29 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+router.get('/shift-tips/:id', rejectUnauthenticated, (req, res) => {
+    const shift_id = req.params.id;
+})
+
 router.post('/add-tip', rejectUnauthenticated, (req, res) => {
 
-    const shift_tips = req.body;
     const timeIn = req.body.timeIn;
     const timeOut = req.body.timeOut;
     const totalHours = req.body.totalHours;
     const totalTips = req.body.total_tips;
+    const drawer_id = req.body.drawer_id;
     const employee_id = req.user.id;
     const shift_id = req.body.shift_id;
 
+    console.log(drawer_id);
     console.log(shift_id);
 
-    // sqlText = `UPDATE shift_tips
-    // SET time_in=$1, time_out=$2, hours_worked=$3, total_tips=$4, employee_id=$5, shift_id=$6
-    // WHERE id`
-
     sqlText = `INSERT INTO shift_tips 
-                (time_in, time_out, hours_worked, total_tips, employee_id, shift_id)
+                (time_in, time_out, hours_worked, total_tips, drawer_id, employee_id, shift_id)
                 VALUES
-                ($1, $2, $3, $4, $5, $6);`
+                ($1, $2, $3, $4, $5, $6, $7);`
 
-    sqlValues = [timeIn, timeOut, totalHours, totalTips, employee_id, shift_id];
+    sqlValues = [timeIn, timeOut, totalHours, totalTips, drawer_id, employee_id, shift_id];
 
     pool.query(sqlText, sqlValues)
     .then(() => res.sendStatus(201))

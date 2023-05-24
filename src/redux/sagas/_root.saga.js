@@ -5,7 +5,7 @@ import userSaga from './user.saga';
 import barRegistrationSaga from './barRegistration.saga';
 import barsSaga from './bars.saga';
 import shiftsSaga from './shifts.saga';
-import shiftTipsSaga from './shiftTips.saga';
+import tipsSaga from './tips.saga';
 import drawersSaga from './drawers.saga';
 
 
@@ -25,7 +25,7 @@ export default function* rootSaga() {
     barRegistrationSaga(),
     barsSaga(),
     shiftsSaga(),
-    shiftTipsSaga(),
+    tipsSaga(),
     drawersSaga()
   ]);
 }

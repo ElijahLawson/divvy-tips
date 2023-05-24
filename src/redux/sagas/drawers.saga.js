@@ -6,7 +6,7 @@ function* fetchDrawers() {
         const response = yield axios.get('/api/drawers')
         yield put({ type: 'SET_DRAWERS', payload: response.data })
     } catch (error) {
-        console.log('Error with Drawers GET request to Server');
+        console.log('Error with Drawers GET request to Server', error);
     }
 }
 

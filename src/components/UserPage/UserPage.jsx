@@ -6,20 +6,28 @@ import NavBar from "../NavBar/NavBar";
 function UserPage() {
 
     const user = useSelector(store => store.user);
-
     const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
+        fetchData();
+      }, [])
+
+    const fetchData = () => {
         dispatch({
-          type: 'SAGA/FETCH_BARS'
-        })
-      }, [dispatch])
+            type: 'SAGA/FETCH_BARS'
+          }),
+          dispatch({
+            type: 'SAGA/FETCH_DRAWERS',
+            payload: user.location_id
+          })
+    }
 
     const onAddTips = () => {
+
         dispatch({
             type: 'SAGA/GET_OR_CREATE_SHIFT'
-        })
+          })
 
         history.push('/add-tips');
     }

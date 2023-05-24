@@ -29,7 +29,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/bar', barRouter);
 app.use('/api/shift', shiftsRouter);
-app.use('/api/shift-tips', shiftTipsRouter);
+app.use('/api/tips', shiftTipsRouter);
 app.use('/api/drawers/', drawersRouter);
 
 // Serve static files

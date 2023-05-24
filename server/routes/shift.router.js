@@ -9,9 +9,10 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
     try {
         const initialResponse = await pool.query(`SELECT * FROM shifts WHERE location_id=${req.user.location_id} AND date=CURRENT_DATE-1`)
         const shift = initialResponse.rows[0];
+        console.log(shift);
 
         if (shift) {
-            res.send({todays_shift_id: shift.id});
+            res.send(shift);
         } else {
             console.log('ELSE');
             const response = await pool.query(`INSERT INTO SHIFTS (date, location_id) VALUES (CURRENT_DATE - 1, ${req.user.location_id}) RETURNING id`);
@@ -22,6 +23,23 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
         console.log('The Shifts GET request to DB failed', error);
         res.sendStatus(500);
     }
+})
+
+router.put('/update/:id', rejectUnauthenticated, (req, res) => {
+
+    const totalCash = req.body.totalCash;
+    const barbackCheck = req.body.barbackCheck;
+    const runner_id = req.body.runner_id;
+    const shift_id = req.body.id;
+
+    sqlQuery = `UPDATE shifts SET total_cash=$1, barback_check=$2, runner_id=$3 where shifts.id=$4`;
+    sqlValues = [totalCash, barbackCheck, runner_id, shift_id]
+
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch(err => {
+        console.log('Cash and Barback Check PUT request to DB failed', err)
+    })
 })
 
 module.exports = router;

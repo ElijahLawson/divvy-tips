@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../NavBar/NavBar";
 import { DateTime } from "luxon";
@@ -10,12 +10,17 @@ function AddTips() {
     const history = useHistory();
 
     const shift = useSelector(store => store.shifts);
+    const drawers = useSelector(store => store.drawers);
+
+    console.log(shift);
 
     const [timeInInput, setTimeInInput] = useState('');
     const [timeOutInput, setTimeOutInput] = useState('');
     const [breakCheck, setBreakCheck] = useState(false);
-    const [breakTimeInput, setBreakTimeInput] = useState(0)
+    const [breakTimeInput, setBreakTimeInput] = useState(0);
+    const [drawerSelected, setDrawerSelected] = useState(1);
     const [chargedTips, setChargedTips] = useState(0);
+
 
     const calculateTotalHours = () => {
         const timeIn = DateTime.fromISO(timeInInput);
@@ -36,17 +41,19 @@ function AddTips() {
 
     const onAddTips = (event) => {
         event.preventDefault();
+
         const totalHours = calculateTotalHours();
         const shift_tips = {
             timeIn: timeInInput,
             timeOut: timeOutInput,
             totalHours: totalHours,
             total_tips: chargedTips,
+            drawer_id: drawerSelected,
             shift_id: shift.todays_shift_id
         }
 
         dispatch({
-            type: 'SAGA/ADD_TIPS',
+            type: 'SAGA/ADD_USER_TIPS',
             payload: shift_tips
         })
 
@@ -107,6 +114,21 @@ function AddTips() {
                                 required
                                 onChange={event => setBreakTimeInput(event.target.value)}
                             />
+                        </label>
+                    </div>
+
+                    <div>
+                        <label>
+                            Drawers
+                            <select value={drawerSelected} onChange={(event) => setDrawerSelected(event.target.value)}>
+                                {drawers.map((drawer) => {
+                                    return(
+                                        <option value={drawer.id} key={drawer.id}>
+                                            {drawer.name}
+                                        </option>
+                                    )
+                                })}
+                            </select>
                         </label>
                     </div>
 

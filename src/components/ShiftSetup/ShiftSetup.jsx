@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 import NavBar from "../NavBar/NavBar";
@@ -7,25 +8,41 @@ import NavBar from "../NavBar/NavBar";
 function ShiftSetup() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        dispatch({
+            type: 'SAGA/GET_OR_CREATE_SHIFT'
+        })
+    }, [])
 
     const [cashTips, setCashTips] = useState(0);
     const [barBackCheck, setBarBackCheck] = useState(false);
-    const shifts = useSelector(store => store.shifts);
-    console.log(shifts.todays_shift_id)
-    
+
+    const shift = useSelector(store => store.shifts);
+    const user = useSelector(store => store.user);
+
     const onShiftSetup = (event) => {
         event.preventDefault();
+        
+        const shiftCashTipsAndBBC = {
+            id: shift.id,
+            totalCash: cashTips,
+            barbackCheck: barBackCheck,
+            runner_id: user.id
+        }
 
-        dispatch({
-            type: 'SAGA/FETCH_TIPS',
-            payload: shifts.todays_shift_id
+        dispatch ({
+            type: 'SAGA/UPDATE_SHIFT_BBC_CASH',
+            payload: shiftCashTipsAndBBC
         })
+
+        history.push(`/shift-edit/`);
     }
 
     return(
         <div>
             <NavBar />
-
             <div>
                 <form onSubmit={onShiftSetup}>
                     <div>

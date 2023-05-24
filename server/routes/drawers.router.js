@@ -15,12 +15,13 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
 })
 
-router.post('/add-drawers', rejectUnauthenticated, (req,res) => {
+router.post('/add-drawers', (req,res) => {
 
   const names = req.body[0]
   const id = req.body[1]
   console.log(req.body)
-  // const names = req.body
+  
+  console.log(id);
   console.log(names)
   const sqlQuery = `INSERT INTO drawers (name, location_id) VALUES (UNNEST($1::text[]), $2);`
   const sqlValues = names;

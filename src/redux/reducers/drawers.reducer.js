@@ -1,7 +1,7 @@
 const drawersReducer = (state=[], action) => {
     switch (action.type) {
         case 'SET_DRAWERS':
-            return [...state, action.payload];
+            return action.payload;
         default:
             return state;
     }

@@ -7,21 +7,17 @@ function UserRegister() {
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useState(1);
 
     const errors = useSelector((store) => store.errors);
     const bars = useSelector((store) => store.bars);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch({
-            type: 'SAGA/FETCH_BARS'
-        })
-    }, []);
    
     const registerUser = (event) => {
         event.preventDefault();
-    
+
+        console.log(location);
+
         dispatch({
           type: 'REGISTER',
           payload: {
@@ -72,7 +68,7 @@ function UserRegister() {
       </div>
 
       <div>
-        <label htmlFor="firstName">
+        <label htmlFor="location">
           Location:
             <select value={location} onChange={(event) => setLocation(event.target.value)}>
                 {bars.map((bar) => {
