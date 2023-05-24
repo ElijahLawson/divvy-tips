@@ -12,6 +12,7 @@ function* fetchUserTips(action) {
 }
 
 function* fetchShiftTips(action) {
+    console.log(action.payload)
     try{
         const response = yield axios.get(`/api/tips/shift-tips/${action.payload}`)
 

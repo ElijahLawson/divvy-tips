@@ -7,6 +7,7 @@ import barsSaga from './bars.saga';
 import shiftsSaga from './shifts.saga';
 import tipsSaga from './tips.saga';
 import drawersSaga from './drawers.saga';
+import hoursSaga from './hours.saga';
 
 
 
@@ -26,6 +27,7 @@ export default function* rootSaga() {
     barsSaga(),
     shiftsSaga(),
     tipsSaga(),
-    drawersSaga()
+    drawersSaga(),
+    hoursSaga()
   ]);
 }

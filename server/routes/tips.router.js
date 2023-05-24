@@ -18,7 +18,22 @@ router.get('/user-tips/:id', rejectUnauthenticated, (req, res) => {
 })
 
 router.get('/shift-tips/:id', rejectUnauthenticated, (req, res) => {
+
     const shift_id = req.params.id;
+    const location_id = req.user.location_id;
+    console.log(location_id)
+
+    sqlText = `SELECT 
+    shift_tips.id, time_in, time_out, hours_worked, total_tips, drawer_id, employee_id, shift_id
+    FROM shift_tips JOIN shifts ON shift_tips.shift_id=shifts.id 
+    WHERE shifts.id=${shift_id} AND shifts.location_id=${location_id}`
+    
+    pool.query(sqlText)
+    .then(results => {
+        res.send(results.rows);
+    }).catch(err => {
+        console.log('Error on Shift Tips GET query to DB', err)
+    })
 })
 
 router.post('/add-tip', rejectUnauthenticated, (req, res) => {

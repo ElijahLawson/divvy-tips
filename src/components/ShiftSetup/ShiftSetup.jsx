@@ -37,7 +37,7 @@ function ShiftSetup() {
             payload: shiftCashTipsAndBBC
         })
 
-        history.push(`/shift-edit/`);
+        history.push(`/hours-edit/`);
     }
 
     return(

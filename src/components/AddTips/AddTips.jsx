@@ -9,10 +9,14 @@ function AddTips() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    useEffect(() => {
+        dispatch({
+            type: 'SAGA/GET_OR_CREATE_SHIFT',
+        })
+    })
+
     const shift = useSelector(store => store.shifts);
     const drawers = useSelector(store => store.drawers);
-
-    console.log(shift);
 
     const [timeInInput, setTimeInInput] = useState('');
     const [timeOutInput, setTimeOutInput] = useState('');
@@ -49,7 +53,7 @@ function AddTips() {
             totalHours: totalHours,
             total_tips: chargedTips,
             drawer_id: drawerSelected,
-            shift_id: shift.todays_shift_id
+            shift_id: shift.id
         }
 
         dispatch({

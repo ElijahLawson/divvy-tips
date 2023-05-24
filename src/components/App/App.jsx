@@ -19,7 +19,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import AddTips from '../AddTips/AddTips';
 import TipConfirmation from '../TipConfirmation/TipConfirmation';
 import ShiftSetup from '../ShiftSetup/ShiftSetup';
-import ShiftConfirmation from '../ShiftConfirmation/ShiftConfirmation';
+import HoursConfirmation from '../HoursConfirmation/HoursConfirmation';
+import TipsConfirmation from '../TipsConfirmation/TipsConfirmation';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ function App() {
 
             <Route exact path="/home">
             {user.id ? <Redirect to="/user" /> : <LandingPage />}
-            </Route>f
+            </Route>
 
             <ProtectedRoute exact path="/add-tips">
               <AddTips />
@@ -69,8 +70,12 @@ function App() {
               <ShiftSetup />
             </ProtectedRoute>
 
-            <ProtectedRoute exact path='/shift-edit/'>
-              <ShiftConfirmation />
+            <ProtectedRoute exact path='/hours-edit/'>
+              <HoursConfirmation />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path='/tips-edit'>
+              <TipsConfirmation />
             </ProtectedRoute>
 
           </Switch>
