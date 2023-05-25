@@ -1,10 +1,8 @@
-Things I've done (in order):
-- Ripped it all apart, starting practically new
-- Created a new landing page with new bar, register user, login buttons
-- Added bar registration/bar sagas and a bar reducer
-- Created new bar registration page
-- Created user registration page
-- Created Login Page
-- Created Logout Button
-- Created Nav Bar
-- 
+color palette:
+    #0D1821 - rich black
+    #93032E - burgundy
+    #C1C1C1 - silver
+    #136F63 - pinegreen
+    #5D72C3 - medium slate blue
+
+    
