@@ -47,7 +47,7 @@ function UserPage() {
             <NavBar />
             <div>
                 <h1>{user.first_name} {user.last_name}</h1>
-                <h3>{bar[0].name}</h3>
+                <h3>{bar[0]?.name}</h3>
             </div>
 
             <div>

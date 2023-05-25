@@ -17,9 +17,6 @@ function TipOutPage() {
     const shiftTips = useSelector(store => store.shiftTips);
     const bar = useSelector(store => store.bars)
 
-    console.log(shift);
-    console.log(shift.total_cash);
-
     const [data, setData] = useState({});
     const [tipout, setTipout] = useState([]);
 
