@@ -5,4 +5,17 @@ color palette:
     #136F63 - pinegreen
     #5D72C3 - medium slate blue
 
-    
+Routes:
+ /home
+ /user
+ /register-bar
+ /register-user
+ /login
+ /home
+ /add-tips
+ /confirm-tips
+ /shift-setup
+ /hours-edit
+ /tips-edit
+ /tip-out
+ /shift-history

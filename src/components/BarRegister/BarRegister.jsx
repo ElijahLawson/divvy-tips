@@ -16,13 +16,13 @@ function BarRegister() {
 
   useEffect(() => {
     dispatch({
-      type: 'SAGA/FETCH_BARS'
-    })
-  }, [dispatch])
+      type: "SAGA/FETCH_BARS",
+    });
+  }, [dispatch]);
 
   const registerBar = (event) => {
     event.preventDefault();
-    
+
     dispatch({
       type: "SAGA/REGISTER_BAR",
       payload: {
@@ -38,7 +38,6 @@ function BarRegister() {
 
   return (
     <div>
-      <NavBar />
       <h1>Location Setup</h1>
       <form>
         <div>
@@ -89,21 +88,21 @@ function BarRegister() {
             />
           </label>
         </div>
-        <div>
-        </div>
+        <div></div>
         <div>
           <button type="submit" onClick={registerBar}>
             Register Bar
           </button>
         </div>
-        {barRegistered && <Popup
-            trigger={<button type='button'> Setup Drawers </button>}
+        {barRegistered && (
+          <Popup
+            trigger={<button type="button"> Setup Drawers </button>}
             position="right center"
             modal
           >
-            <DrawersSetup site={[city, stateCode]}/>
+            <DrawersSetup site={[city, stateCode]} />
           </Popup>
-        }
+        )}
       </form>
     </div>
   );
