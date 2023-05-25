@@ -1,0 +1,15 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "comment", "blank", "total"
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/shift.router.js", "JavaScript", 25, 0, 0, 6, 31
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/App/App.jsx", "JavaScript JSX", 0, 4, 0, 1, 5
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/HoursConfirmation/HoursConfirmation.jsx", "JavaScript JSX", 0, -4, 4, 1, 1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/ShiftHistory/ShiftHistory.jsx", "JavaScript JSX", 0, 67, 0, 13, 80
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/TipOutPage/TipOutPage.jsx", "JavaScript JSX", 0, 12, 0, 3, 15
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/TipsConfirmation/TipsConfirmation.jsx", "JavaScript JSX", 0, -4, 3, 0, -1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/UserPage/UserPage.jsx", "JavaScript JSX", 0, 1, 0, -1, 0
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/_root.reducer.js", "JavaScript", 2, 0, 0, 0, 2
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/bar.reducer.js", "JavaScript", -1, 0, 0, 0, -1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/shiftHistory.reducer.js", "JavaScript", 9, 0, 0, 1, 10
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/_root.saga.js", "JavaScript", 0, 0, 0, 1, 1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/shifts.saga.js", "JavaScript", 14, 0, 0, 1, 15
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/tips.saga.js", "JavaScript", 2, 0, 0, 0, 2
+"Total", "-", 51, 76, 7, 26, 160

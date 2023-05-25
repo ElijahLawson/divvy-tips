@@ -14,6 +14,7 @@ function ShiftConfirmation() {
     }, [])
 
     const hours = useSelector(store => store.hours);
+    
     const shift = useSelector(store => store.shifts);
 
     console.log(hours)
@@ -24,25 +25,14 @@ function ShiftConfirmation() {
             type: 'SAGA/GET_OR_CREATE_SHIFT'
         })
 
-        dispatch({
-            type: 'SAGA/FETCH_SHIFT_HOURS',
-            payload: shift.id
-        })
+        // dispatch({
+        //     type: 'SAGA/FETCH_SHIFT_HOURS',
+        //     payload: shift.id
+        // })
     }
 
     const onHoursConfirm = (event) => {
         event.preventDefault();
-        
-        // let totalHours = hours.map(hour => Number(hour.hours_worked))
-        //                         .reduce((accumulator, hours_worked) => accumulator + hours_worked, 0);
-        
-        // dispatch({
-        //     type: 'SAGA/UPDATE_SHIFT_HOURS',
-        //     payload: {
-        //         totalHours: totalHours,
-        //         shift_id: shift.id
-        //     }
-        // })
 
         history.push('/tips-edit')
     }

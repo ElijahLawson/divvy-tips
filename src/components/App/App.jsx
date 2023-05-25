@@ -22,6 +22,7 @@ import ShiftSetup from '../ShiftSetup/ShiftSetup';
 import HoursConfirmation from '../HoursConfirmation/HoursConfirmation';
 import TipsConfirmation from '../TipsConfirmation/TipsConfirmation';
 import TipOutPage from '../TipOutPage/TipOutPage';
+import ShiftHistory from '../ShiftHistory/ShiftHistory';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
     dispatch({ type: 'SAGA/FETCH_ALL_BARS'});
-  }, [dispatch]);
+  }, []);
 
   return (
       <div>
@@ -81,6 +82,10 @@ function App() {
 
             <ProtectedRoute exact path='/tip-out'>
               <TipOutPage />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path='/shift-history'>
+              <ShiftHistory />
             </ProtectedRoute>
 
           </Switch>

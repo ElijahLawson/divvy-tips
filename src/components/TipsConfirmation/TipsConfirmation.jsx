@@ -17,23 +17,22 @@ function TipsConfirmation() {
 
     const fetchData = () => {
 
-        dispatch({
-            type: 'SAGA/FETCH_SHIFT_TIPS',
-            payload: shift.id
-        })
 
         dispatch({
             type: 'SAGA/GET_OR_CREATE_SHIFT'
         })
 
+        // console.log(shift.id);
+        
+        // dispatch({
+        //     type: 'SAGA/FETCH_SHIFT_TIPS',
+        //     payload: shift.id
+        // })
 
     }
 
     const onTipsConfirm = (event) => {
         event.preventDefault();
-
-        // let totalCash = shiftTips.map(tips => Number(tips.total_tips.replace(/[^\d.]/g, '')))
-        //                             .reduce((accumulator, tips) => accumulator + tips, 0);
 
         history.push('/tip-out');
     }

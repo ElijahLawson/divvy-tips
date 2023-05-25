@@ -6,6 +6,7 @@ import NavBar from "../NavBar/NavBar";
 function UserPage() {
 
     const user = useSelector(store => store.user);
+    const bar = useSelector(store => store.bars);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -15,7 +16,7 @@ function UserPage() {
 
     const fetchData = () => {
         dispatch({
-            type: 'SAGA/FETCH_BARS'
+            type: 'SAGA/FETCH_USER_BAR'
           }),
           dispatch({
             type: 'SAGA/FETCH_DRAWERS',
@@ -38,7 +39,7 @@ function UserPage() {
     }
 
     const onShiftHistory = () => {
-
+        history.push('/shift-history')
     }
 
     return(
@@ -46,9 +47,7 @@ function UserPage() {
             <NavBar />
             <div>
                 <h1>{user.first_name} {user.last_name}</h1>
-                <h3>{user.location_id}</h3>
-                <p>Weekly Hours: </p>
-                <p>Weekly Tips: </p>
+                <h3>{bar[0].name}</h3>
             </div>
 
             <div>

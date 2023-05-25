@@ -13,23 +13,19 @@ function TipOutPage() {
     }, [])
 
     const shift = useSelector(store => store.shifts);
-    console.log("SHIFT", shift)
     const hours = useSelector(store => store.hours);
-    console.log("HOURS", hours)
     const shiftTips = useSelector(store => store.shiftTips);
-    console.log("TIPS", shiftTips)
     const bar = useSelector(store => store.bars)
-    console.log("BAR", bar)
-    
+
+    console.log(shift);
+    console.log(shift.total_cash);
+
     const [data, setData] = useState({});
     const [tipout, setTipout] = useState([]);
 
     const fetchData = () => {
         dispatch({type: 'SAGA/GET_OR_CREATE_SHIFT'});
-        dispatch({type: 'SAGA/FETCH_SHIFT_HOURS', payload: shift.id});
-        dispatch({type: 'SAGA/FETCH_SHIFT_TIPS', payload: shift.id});
         dispatch({type: 'SAGA/FETCH_USER_BAR'})
-        runTheMoney();
     }
 
     const calculateTotalHours = () => {
@@ -38,13 +34,17 @@ function TipOutPage() {
     }
 
     const calculateTotalCash = () => {
-        return shiftTips.map(tips => Number(tips.total_tips.replace(/[^\d.]/g, '')))
+        let chargedTips = shiftTips.map(tips => Number(tips.total_tips.replace(/[^\d.]/g, '')))
                                     .reduce((accumulator, tips) => accumulator + tips, 0);
+        return chargedTips + Number(shift.total_cash.replace(/[^\d.]/g, ''))
     }
 
     const calculateBarBackCut = (totalCash) => {
-        console.log(bar);
-        return Math.round(totalCash * Number(bar[0].barback_cut))
+        if (shift.barback_check === true) {
+            return Math.round(totalCash * Number(bar[0].barback_cut))
+        } else {
+            return 0;
+        }
     }
 
     const calculateHourly = (totalHours, totalCash, barbackCut) => {
@@ -75,6 +75,14 @@ function TipOutPage() {
 
         const calculatedTipout = hours.map(bartender => ({...bartender, tipout: Math.round(bartender.hours_worked * data.hourly)}));
 
+        dispatch({
+            type: 'SAGA/UPDATE_SHIFT_HOURLY',
+            payload: {
+                hourly: data.hourly,
+                shift_id: shift.id
+            }
+        })
+
         return setTipout(calculatedTipout);
 
     }
@@ -87,6 +95,7 @@ function TipOutPage() {
                 <h3>Hourly: {data.hourly}</h3>
                 <h3>Barback Cut: {data.barbackCut}</h3>
 
+                <button onClick={runTheMoney}>Run the Money!</button>
                 <table>
                         <thead>
                             <tr>
@@ -108,6 +117,7 @@ function TipOutPage() {
                             })}
                         </tbody>
                 </table>
+
             </div>
         </div>
     )

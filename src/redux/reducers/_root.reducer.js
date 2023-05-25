@@ -7,6 +7,7 @@ import shiftTips from './shiftTips.reducer';
 import userTips from './userTips.reducer';
 import drawers from './drawers.reducer';
 import hours from './hours.reducer';
+import shiftHistory from './shiftHistory.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   userTips,
   hours,
   drawers,
+  shiftHistory
 });
 
 export default rootReducer;

@@ -25,6 +25,23 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
     }
 })
 
+router.get('/user-history', rejectUnauthenticated, (req, res) => {
+    const user_id = req.user.id;
+    console.log(user_id);
+    const sqlQuery = `SELECT shifts.date, shifts.hourly, shift_tips.hours_worked 
+    FROM shift_tips JOIN shifts ON shift_tips.shift_id=shifts.id
+    WHERE shift_tips.employee_id=${user_id}`;
+
+    pool.query(sqlQuery)
+    .then(results => {
+        res.send(results.rows);
+    })
+    .catch(err => {
+        console.log('USER SHIFT HISTORY GET REQUEST TO DB FAILED', error);
+    })
+
+})
+
 router.put('/update-1/:id', rejectUnauthenticated, (req, res) => {
 
     const totalCash = req.body.totalCash;
@@ -53,6 +70,20 @@ router.put('/update-2/:id', rejectUnauthenticated, (req, res) => {
     .then(() => res.sendStatus(200))
     .catch(err => {
         console.log('Total Hours PUT request to DB failed', err);
+    })
+})
+
+router.put('/update-3/:id', rejectUnauthenticated, (req, res) => {
+    const hourly = req.body.hourly;
+    const shift_id = req.params.id;
+
+    sqlQuery = `UPDATE shifts SET hourly=$1 WHERE shifts.id=$2`;
+    sqlValues = [hourly, shift_id];
+
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch(err => {
+        console.log('Hourly PUT request to DB failed', err);
     })
 })
 
