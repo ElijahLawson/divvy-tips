@@ -15,8 +15,6 @@ function* fetchUserTips(action) {
 function* fetchShiftTips(action) {
     try{
         const response = yield axios.get(`/api/tips/shift-tips/${action.payload}`)
-
-        console.log("🚀 ~ file: tips.saga.js:19 ~ function*fetchShiftTips ~ response:", response)
         yield put({ type : 'SET_SHIFT_TIPS', payload: response.data })
     } catch (error) {
         console.log('Error with Shift Tips Get Request to Server');

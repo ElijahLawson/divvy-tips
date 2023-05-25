@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
-import NavBar from "../NavBar/NavBar";
+import { useSelector } from "react-redux";
+import LogOutButton from "../BackButton/BackButton";
+import HamburgerButton from "../HamburgerButton/HamburgerButton";
 
 function Header() {
-    return(
-        <div>
-            <NavBar />
-            <Link to="/home">
-                <h2 className="nav-title">Divvy Tips</h2>
-            </Link>
-        </div>
-    )
+  const user = useSelector((store) => store.user);
+
+  return (
+    <div className="bg-black h-18 flex justify-center">
+      {user.id && <LogOutButton />}
+      <Link to="/home">
+        <img
+          src="logos/logo_transparent_header.png"
+          className="scale-75 -ml-1 border border-white"
+        ></img>
+      </Link>
+      <HamburgerButton />
+    </div>
+  );
 }
 
 export default Header;

@@ -19,9 +19,18 @@ function* fetchAllBars() {
     }
 }
 
+function* registerBar(action) {
+    try {
+      yield axios.post('/api/bar/register', action.payload);
+    } catch (error) {
+      console.log('Error with Bar Registration', error);
+    }
+  }
+
 function* barsSaga() {
-    yield takeLatest('SAGA/FETCH_USER_BARS', fetchUserBars)
+    yield takeLatest('SAGA/FETCH_USER_BARS', fetchUserBars);
     yield takeLatest('SAGA/FETCH_ALL_BARS', fetchAllBars);
+    yield takeLatest('SAGA/REGISTER_BAR', registerBar);
 }
 
 export default barsSaga;

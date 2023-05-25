@@ -2,6 +2,7 @@ import {put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchHours(action) {
+    console.log(action.payload)
     try{
         const response = yield axios.get(`/api/hours/shift-hours/${action.payload}`);
         yield put({ type: 'SET_SHIFT_HOURS', payload: response.data})

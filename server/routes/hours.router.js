@@ -18,6 +18,7 @@ router.get('/shift-hours/:id', rejectUnauthenticated, (req, res) => {
 
     pool.query(sqlText, sqlValues)
     .then(results => {
+        console.log(results.rows);
         res.send(results.rows);
     })
     .catch(err => {

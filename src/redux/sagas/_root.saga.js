@@ -2,7 +2,6 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
-import barRegistrationSaga from './barRegistration.saga';
 import barsSaga from './bars.saga';
 import shiftsSaga from './shifts.saga';
 import tipsSaga from './tips.saga';
@@ -24,7 +23,6 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    barRegistrationSaga(),
     barsSaga(),
     shiftsSaga(),
     tipsSaga(),

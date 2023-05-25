@@ -1,64 +1,67 @@
 import React, { useEffect } from "react";
-import { Routes, Route, redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 import "./App.css";
-import Layout from "../Layout/Layout";
-import LandingPage from "../LandingPage/LandingPage";
-import BarRegister from "../BarRegister/BarRegister";
-import UserRegister from "../UserRegister/UserRegister";
-import UserPage from "../UserPage/UserPage";
-import LoginPage from "../LoginPage/LoginPage";
-import AddTips from "../AddTips/AddTips";
-import AddTipsConfirmation from "../AddTipsConfirmation/AddTipsConfirmation";
-import ShiftSetup from "../ShiftSetup/ShiftSetup";
-import HoursConfirmation from "../HoursConfirmation/HoursConfirmation";
-import TipsConfirmation from "../TipsConfirmation/TipsConfirmation";
-import TipOutPage from "../TipOutPage/TipOutPage";
-import ShiftHistory from "../ShiftHistory/ShiftHistory";
+import Layout from "../../Pages/Layout/Layout";
+import LandingPage from "../../Pages/LandingPage/LandingPage";
+import BarRegister from "../../Pages/BarRegister/BarRegister";
+import UserRegister from "../../Pages/UserRegister/UserRegister";
+import UserPage from "../../Pages/UserPage/UserPage";
+import LoginPage from "../../Pages/LoginPage/LoginPage";
+import AddTips from "../../Pages/AddTips/AddTips";
+import AddTipsConfirmation from "../../Pages/AddTipsConfirmation/AddTipsConfirmation";
+import ShiftSetup from "../../Pages/ShiftSetup/ShiftSetup";
+import HoursConfirmation from "../../Pages/HoursConfirmation/HoursConfirmation";
+import TipsConfirmation from "../../Pages/TipsConfirmation/TipsConfirmation";
+import TipOutPage from "../../Pages/TipOutPage/TipOutPage";
+import ShiftHistory from "../../Pages/ShiftHistory/ShiftHistory";
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+  console.log(user);
 
   useEffect(() => {
     dispatch({ type: "FETCH_USER" });
     dispatch({ type: "SAGA/FETCH_ALL_BARS" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <main>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route
+            path="/home"
+            element={user.id ? <Navigate to="/user" /> : <LandingPage />}
+          />
+          <Route
+            path="/register-user"
+            element={user.id ? <Navigate to="/user" /> : <UserRegister />}
+          />
+          <Route
+            path="/login"
+            element={user.id ? <Navigate to="/user" /> : <LoginPage />}
+          />
           <Route
             path="/user"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <UserPage />{" "}
+                <UserPage />
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/register-bar"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <BarRegister />{" "}
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/register-user"
-            element={
-              <ProtectedRoute user={user}>
-                {" "}
-                <UserRegister />{" "}
+                <BarRegister />
               </ProtectedRoute>
             }
           />
@@ -66,8 +69,7 @@ function App() {
             path="/add-tips"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <AddTips />{" "}
+                <AddTips />
               </ProtectedRoute>
             }
           />
@@ -75,8 +77,7 @@ function App() {
             path="/confirm-tips"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <AddTipsConfirmation />{" "}
+                <AddTipsConfirmation />
               </ProtectedRoute>
             }
           />
@@ -84,8 +85,7 @@ function App() {
             path="/shift-setup"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <ShiftSetup />{" "}
+                <ShiftSetup />
               </ProtectedRoute>
             }
           />
@@ -93,8 +93,7 @@ function App() {
             path="/hours-edit"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <HoursConfirmation />{" "}
+                <HoursConfirmation />
               </ProtectedRoute>
             }
           />
@@ -102,8 +101,7 @@ function App() {
             path="/tips-edit"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <TipsConfirmation />{" "}
+                <TipsConfirmation />
               </ProtectedRoute>
             }
           />
@@ -111,8 +109,7 @@ function App() {
             path="/tip-out"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <TipOutPage />{" "}
+                <TipOutPage />
               </ProtectedRoute>
             }
           />
@@ -120,15 +117,9 @@ function App() {
             path="/shift-history"
             element={
               <ProtectedRoute user={user}>
-                {" "}
-                <UserPage />{" "}
+                <ShiftHistory />
               </ProtectedRoute>
             }
-          />
-
-          <Route
-            path="login"
-            element={user.id ? <LoginPage /> : redirect("/user")}
           />
         </Route>
       </Routes>
