@@ -8,12 +8,16 @@ const router = express.Router();
 // Handles Ajax request for user information if user is authenticated
 router.get('/user-bar', (req, res) => {
     user_id = req.user.id
-    pool.query(`SELECT location.id, 
-        location.name, 
-        location.city, 
-        location.state,
-        location.barback_cut
-         FROM location JOIN "user" ON location.id="user".location_id WHERE "user".id=${user_id};`)
+
+    const sqlQuery = `SELECT location.id, 
+                            location.name, 
+                            location.city, 
+                            location.state,
+                            location.barback_cut
+                    FROM location JOIN "user" ON location.id="user".location_id 
+                    WHERE "user".id=${user_id};`
+
+    pool.query(sqlQuery)
     .then((results) => {
         res.send(results.rows)
     })
@@ -31,6 +35,21 @@ router.get('/all-bars', (req, res) => {
     .catch(err => {
         console.log('Error')
         res.sendStatus(500)
+    })
+})
+
+router.get('/bartenders/', rejectUnauthenticated, (req, res) => {
+    const location_id = req.user.location_id;
+    const sqlQuery = `SELECT "user".id, "user".first_name, "user".last_name 
+                    FROM "user" JOIN location on "user".location_id=location.id
+                    WHERE location.id=${location_id}`
+    pool.query(sqlQuery)
+    .then(results => {
+        res.send(results.rows);
+    })
+    .catch(err => {
+        console.log('Error retrieving location bartenders from database', err)
+        res.sendStatus(500);
     })
 })
 

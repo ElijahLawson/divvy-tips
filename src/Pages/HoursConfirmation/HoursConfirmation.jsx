@@ -1,23 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import EditTable from "../../components/EditTable/EditTable";
 
 function ShiftConfirmation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const hours = useSelector((store) => store.hours);
+  const shift_tips = useSelector((store) => store.shiftTips);
 
-  console.log(hours);
+  console.log(shift_tips);
+
+  const tableConfig = {
+    data: shift_tips,
+    defaultState: [{ id: "", bartender: "", hours_worked: ""}],
+    defaultAddValues: [{ bartender: "", hours_worked: ""}],
+    navRoute : '/tips-edit',
+    cols: ['Bartender', 'Hours'],
+    sagaRoute: ''
+  }
 
   const fetchData = () => {
     dispatch({
-      type: "SAGA/GET_OR_CREATE_SHIFT",
-    });
+      type: "SAGA/FETCH_SHIFT_TIPS"
+    })
   };
 
   const onHoursConfirm = (event) => {
@@ -30,36 +40,11 @@ function ShiftConfirmation() {
     <div>
       <div>
         <h2>Confirm / Edit Hours</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Bartender</th>
-              <th>Hours</th>
-            </tr>
-          </thead>
-          <tbody>
-            {hours.map((time) => {
-              return (
-                <tr>
-                  <td>
-                    {time.first_name} {time.last_name}
-                  </td>
-                  <td>{time.hours_worked}</td>
-                  <td>
-                    <button>Edit</button>
-                  </td>
-                  <td>
-                    <button>Delete</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        
+        <EditTable tableConfig={tableConfig}/>
+
       </div>
-      <div>
-        <button onClick={onHoursConfirm}>Next</button>
-      </div>
+
     </div>
   );
 }

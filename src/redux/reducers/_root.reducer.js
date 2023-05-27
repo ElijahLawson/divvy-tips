@@ -8,6 +8,7 @@ import userTips from './userTips.reducer';
 import drawers from './drawers.reducer';
 import hours from './hours.reducer';
 import shiftHistory from './shiftHistory.reducer';
+import bartenders from './bartenders.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user,
   bars,
+  bartenders,
   shifts,
   shiftTips,
   userTips,

@@ -28,6 +28,8 @@ function ShiftSetup() {
       runner_id: user.id,
     };
 
+    console.log(shiftCashTipsAndBBC)
+
     dispatch({
       type: "SAGA/UPDATE_SHIFT_BBC_CASH",
       payload: shiftCashTipsAndBBC,

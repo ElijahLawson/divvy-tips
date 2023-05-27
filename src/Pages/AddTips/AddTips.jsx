@@ -47,11 +47,14 @@ function AddTips() {
     const shift_tips = {
       timeIn: timeInInput,
       timeOut: timeOutInput,
+      breakTime: breakTimeInput,
       totalHours: totalHours,
       total_tips: chargedTips,
       drawer_id: drawerSelected,
       shift_id: shift.id,
     };
+
+    console.log('shift_tips', shift_tips)
 
     dispatch({
       type: "SAGA/ADD_USER_TIPS",

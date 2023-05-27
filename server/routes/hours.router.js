@@ -9,7 +9,7 @@ router.get('/shift-hours/:id', rejectUnauthenticated, (req, res) => {
     const shift_id = req.params.id;
     const location_id = req.user.location_id;
 
-    sqlText = `SELECT first_name, last_name, hours_worked FROM shift_tips 
+    sqlText = `SELECT "user".id, first_name, last_name, hours_worked FROM shift_tips 
     JOIN "user" ON shift_tips.employee_id="user".id 
     JOIN location on "user"."location_id" = location.id
     WHERE shift_tips.shift_id=$1 and location.id=$2;`
@@ -25,5 +25,11 @@ router.get('/shift-hours/:id', rejectUnauthenticated, (req, res) => {
         console.log('Error on GET request to Database on api/hours/shift-hours/', err)
     })
 })
+
+// router.put('/shift-hours/update/:id', rejectUnauthenticated, (req, res) => {
+//     const shift_id = req.params.id;
+//     // const 
+
+// })
 
 module.exports = router;

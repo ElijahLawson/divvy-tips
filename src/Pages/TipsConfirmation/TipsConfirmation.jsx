@@ -47,8 +47,8 @@ function TipsConfirmation() {
             {shiftTips.map((tips) => {
               return (
                 <tr>
-                  <td>{tips.name}</td>
-                  <td>{tips.total_tips}</td>
+                    <td>{tips.name}</td>
+                    <td>{tips.total_tips}</td>
                   <td>
                     <button>Edit</button>
                   </td>

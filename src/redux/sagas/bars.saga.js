@@ -27,10 +27,20 @@ function* registerBar(action) {
     }
   }
 
+function* fetchLocationBartenders() {
+    try {
+        const response = yield axios.get(`/api/bar/bartenders/`)
+        yield put({ type: 'SET_BARTENDERS', payload: response.data})
+    } catch (error) {
+        console.log('Error getting location bartenders from server', error)
+    }
+}
+
 function* barsSaga() {
     yield takeLatest('SAGA/FETCH_USER_BARS', fetchUserBars);
     yield takeLatest('SAGA/FETCH_ALL_BARS', fetchAllBars);
     yield takeLatest('SAGA/REGISTER_BAR', registerBar);
+    yield takeLatest('SAGA/FETCH_BAR_BARTENDERS', fetchLocationBartenders)
 }
 
 export default barsSaga;

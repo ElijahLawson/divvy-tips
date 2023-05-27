@@ -1,0 +1,128 @@
+Date : 2023-05-26 17:20:07
+Directory : /Users/elijahlawson/Desktop/Prime/divvy-tips
+Total : 54 files,  479 codes, 4 comments, 80 blanks, all 563 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         36 |        269 |         -1 |         55 |        323 |
+| JavaScript     |         15 |        158 |          5 |         21 |        184 |
+| Markdown       |          1 |         51 |          0 |          5 |         56 |
+| JSON           |          1 |          6 |          0 |          0 |          6 |
+| CSS            |          1 |         -5 |          0 |         -1 |         -6 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                    | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                       |         54 |        479 |          4 |         80 |        563 |
+| . (Files)                                                                                               |          3 |         60 |          0 |          5 |         65 |
+| server                                                                                                  |          3 |         94 |          5 |         16 |        115 |
+| server/routes                                                                                           |          3 |         94 |          5 |         16 |        115 |
+| src                                                                                                     |         48 |        325 |         -1 |         59 |        383 |
+| src (Files)                                                                                             |          1 |          0 |          0 |         -1 |         -1 |
+| src/Pages                                                                                               |         14 |        923 |         10 |        170 |      1,103 |
+| src/Pages/AddTips                                                                                       |          1 |        141 |          0 |         22 |        163 |
+| src/Pages/AddTipsConfirmation                                                                           |          1 |         17 |          0 |          5 |         22 |
+| src/Pages/BarRegister                                                                                   |          1 |        102 |          0 |          9 |        111 |
+| src/Pages/DrawersSetup                                                                                  |          1 |         46 |          0 |         12 |         58 |
+| src/Pages/HoursConfirmation                                                                             |          1 |         36 |          3 |         14 |         53 |
+| src/Pages/LandingPage                                                                                   |          1 |         35 |          0 |         11 |         46 |
+| src/Pages/Layout                                                                                        |          1 |         40 |          2 |          7 |         49 |
+| src/Pages/LoginPage                                                                                     |          1 |         63 |          0 |          6 |         69 |
+| src/Pages/ShiftHistory                                                                                  |          1 |         63 |          0 |         12 |         75 |
+| src/Pages/ShiftSetup                                                                                    |          1 |         63 |          0 |         13 |         76 |
+| src/Pages/TipOutPage                                                                                    |          1 |        105 |          0 |         19 |        124 |
+| src/Pages/TipsConfirmation                                                                              |          1 |         56 |          5 |         11 |         72 |
+| src/Pages/UserPage                                                                                      |          1 |         53 |          0 |         11 |         64 |
+| src/Pages/UserRegister                                                                                  |          1 |        103 |          0 |         18 |        121 |
+| src/components                                                                                          |         23 |       -659 |        -11 |       -116 |       -786 |
+| src/components/AddTips                                                                                  |          1 |       -141 |          0 |        -21 |       -162 |
+| src/components/AddTipsConfirmation                                                                      |          1 |        -19 |          0 |         -5 |        -24 |
+| src/components/App                                                                                      |          2 |        -14 |          0 |         -1 |        -15 |
+| src/components/BackButton                                                                               |          1 |         13 |          0 |          5 |         18 |
+| src/components/BarRegister                                                                              |          1 |       -104 |          0 |         -9 |       -113 |
+| src/components/DrawersSetup                                                                             |          1 |        -46 |          0 |        -12 |        -58 |
+| src/components/EditTable                                                                                |          1 |        266 |          1 |         38 |        305 |
+| src/components/HamburgerButton                                                                          |          1 |         17 |          0 |          5 |         22 |
+| src/components/Header                                                                                   |          1 |         20 |          0 |          4 |         24 |
+| src/components/HoursConfirmation                                                                        |          1 |        -61 |         -4 |        -12 |        -77 |
+| src/components/LandingPage                                                                              |          1 |        -36 |          0 |        -11 |        -47 |
+| src/components/Layout                                                                                   |          1 |         -8 |          0 |         -3 |        -11 |
+| src/components/LogOutButton                                                                             |          1 |        -14 |         -3 |         -2 |        -19 |
+| src/components/LoginPage                                                                                |          1 |        -65 |          0 |         -6 |        -71 |
+| src/components/NavBar                                                                                   |          1 |        -16 |          0 |         -3 |        -19 |
+| src/components/ProtectedRoute                                                                           |          1 |          1 |          0 |          1 |          2 |
+| src/components/ShiftHistory                                                                             |          1 |        -65 |          0 |        -12 |        -77 |
+| src/components/ShiftSetup                                                                               |          1 |        -64 |          0 |        -13 |        -77 |
+| src/components/TipOutPage                                                                               |          1 |       -107 |          0 |        -19 |       -126 |
+| src/components/TipsConfirmation                                                                         |          1 |        -58 |         -5 |        -11 |        -74 |
+| src/components/UserPage                                                                                 |          1 |        -55 |          0 |        -11 |        -66 |
+| src/components/UserRegister                                                                             |          1 |       -103 |          0 |        -18 |       -121 |
+| src/redux                                                                                               |         10 |         61 |          0 |          6 |         67 |
+| src/redux/reducers                                                                                      |          4 |         16 |          0 |          1 |         17 |
+| src/redux/sagas                                                                                         |          6 |         45 |          0 |          5 |         50 |
++---------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                | language       | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/TODO.md                                                    | Markdown       |         51 |          0 |          5 |         56 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/package.json                                               | JSON           |          6 |          0 |          0 |          6 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/bar.router.js                                | JavaScript     |         16 |          0 |          3 |         19 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/hours.router.js                              | JavaScript     |          1 |          4 |          2 |          7 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/tips.router.js                               | JavaScript     |         77 |          1 |         11 |         89 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/AddTips/AddTips.jsx                              | JavaScript JSX |        141 |          0 |         22 |        163 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/AddTipsConfirmation/AddTipsConfirmation.jsx      | JavaScript JSX |         17 |          0 |          5 |         22 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/BarRegister/BarRegister.jsx                      | JavaScript JSX |        102 |          0 |          9 |        111 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/DrawersSetup/DrawersSetup.jsx                    | JavaScript JSX |         46 |          0 |         12 |         58 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/HoursConfirmation/HoursConfirmation.jsx          | JavaScript JSX |         36 |          3 |         14 |         53 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/LandingPage/LandingPage.jsx                      | JavaScript JSX |         35 |          0 |         11 |         46 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/Layout/Layout.jsx                                | JavaScript JSX |         40 |          2 |          7 |         49 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/LoginPage/LoginPage.jsx                          | JavaScript JSX |         63 |          0 |          6 |         69 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/ShiftHistory/ShiftHistory.jsx                    | JavaScript JSX |         63 |          0 |         12 |         75 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/ShiftSetup/ShiftSetup.jsx                        | JavaScript JSX |         63 |          0 |         13 |         76 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/TipOutPage/TipOutPage.jsx                        | JavaScript JSX |        105 |          0 |         19 |        124 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/TipsConfirmation/TipsConfirmation.jsx            | JavaScript JSX |         56 |          5 |         11 |         72 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/UserPage/UserPage.jsx                            | JavaScript JSX |         53 |          0 |         11 |         64 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/UserRegister/UserRegister.jsx                    | JavaScript JSX |        103 |          0 |         18 |        121 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/AddTips/AddTips.jsx                         | JavaScript JSX |       -141 |          0 |        -21 |       -162 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/AddTipsConfirmation/AddTipsConfirmation.jsx | JavaScript JSX |        -19 |          0 |         -5 |        -24 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/App/App.css                                 | CSS            |         -5 |          0 |         -1 |         -6 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/App/App.jsx                                 | JavaScript JSX |         -9 |          0 |          0 |         -9 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/BackButton/BackButton.jsx                   | JavaScript JSX |         13 |          0 |          5 |         18 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/BarRegister/BarRegister.jsx                 | JavaScript JSX |       -104 |          0 |         -9 |       -113 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/DrawersSetup/DrawersSetup.jsx               | JavaScript JSX |        -46 |          0 |        -12 |        -58 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/EditTable/EditTable.jsx                     | JavaScript JSX |        266 |          1 |         38 |        305 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/HamburgerButton/HamburgerButton.jsx         | JavaScript JSX |         17 |          0 |          5 |         22 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/Header/Header.jsx                           | JavaScript JSX |         20 |          0 |          4 |         24 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/HoursConfirmation/HoursConfirmation.jsx     | JavaScript JSX |        -61 |         -4 |        -12 |        -77 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/LandingPage/LandingPage.jsx                 | JavaScript JSX |        -36 |          0 |        -11 |        -47 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/Layout/Layout.jsx                           | JavaScript JSX |         -8 |          0 |         -3 |        -11 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/LogOutButton/LogOutButton.jsx               | JavaScript JSX |        -14 |         -3 |         -2 |        -19 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/LoginPage/LoginPage.jsx                     | JavaScript JSX |        -65 |          0 |         -6 |        -71 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/NavBar/NavBar.jsx                           | JavaScript JSX |        -16 |          0 |         -3 |        -19 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/ProtectedRoute/ProtectedRoute.jsx           | JavaScript JSX |          1 |          0 |          1 |          2 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/ShiftHistory/ShiftHistory.jsx               | JavaScript JSX |        -65 |          0 |        -12 |        -77 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/ShiftSetup/ShiftSetup.jsx                   | JavaScript JSX |        -64 |          0 |        -13 |        -77 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/TipOutPage/TipOutPage.jsx                   | JavaScript JSX |       -107 |          0 |        -19 |       -126 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/TipsConfirmation/TipsConfirmation.jsx       | JavaScript JSX |        -58 |         -5 |        -11 |        -74 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/UserPage/UserPage.jsx                       | JavaScript JSX |        -55 |          0 |        -11 |        -66 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/UserRegister/UserRegister.jsx               | JavaScript JSX |       -103 |          0 |        -18 |       -121 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/index.js                                               | JavaScript     |          0 |          0 |         -1 |         -1 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/_root.reducer.js                        | JavaScript     |          2 |          0 |          0 |          2 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/bartenders.reducer.js                   | JavaScript     |          9 |          0 |          1 |         10 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/shiftTips.reducer.js                    | JavaScript     |          4 |          0 |          0 |          4 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/reducers/shifts.reducer.js                       | JavaScript     |          1 |          0 |          0 |          1 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/_root.saga.js                              | JavaScript     |         -2 |          0 |          0 |         -2 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/barRegistration.saga.js                    | JavaScript     |        -13 |          0 |         -4 |        -17 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/bars.saga.js                               | JavaScript     |         17 |          0 |          2 |         19 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/hours.saga.js                              | JavaScript     |         10 |          0 |          2 |         12 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/login.saga.js                              | JavaScript     |          1 |          0 |         -1 |          0 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/src/redux/sagas/tips.saga.js                               | JavaScript     |         32 |          0 |          6 |         38 |
+| /Users/elijahlawson/Desktop/Prime/divvy-tips/tailwind.config.js                                         | JavaScript     |          3 |          0 |          0 |          3 |
+| Total                                                                                                   |                |        479 |          4 |         80 |        563 |
++---------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
