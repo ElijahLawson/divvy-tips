@@ -15,11 +15,11 @@ function UserPage() {
   const fetchData = () => {
     dispatch({
       type: "SAGA/FETCH_USER_BAR",
-    }),
-      dispatch({
-        type: "SAGA/FETCH_DRAWERS",
-        payload: user.location_id,
-      });
+    })
+    dispatch({
+      type: "SAGA/FETCH_DRAWERS",
+      payload: user.location_id,
+    });
   };
 
   const onAddTips = () => {

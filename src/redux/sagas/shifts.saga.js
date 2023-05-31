@@ -7,6 +7,7 @@ function* getOrCreateShift() {
         yield put({ type: 'SET_SHIFTS', payload: response.data});
         yield put({ type: 'SAGA/FETCH_SHIFT_HOURS', payload: response.data.id});
         yield put({ type: 'SAGA/FETCH_SHIFT_TIPS', payload: response.data.id});
+        yield put({ type: 'SAGA/FETCH_SHIFT_DRAWERS', payload: response.data.id});
     } catch {
         console.log('Error posting shifts to server', error)
     }
@@ -52,7 +53,7 @@ function* shiftsSaga() {
     yield takeLatest('SAGA/UPDATE_SHIFT_BBC_CASH', updateShiftNoCalculations);
     yield takeLatest('SAGA/UPDATE_SHIFT_HOURS', updateTotalHours);
     yield takeLatest('SAGA/UPDATE_SHIFT_HOURLY', updateShiftHourly);
-    yield takeLatest('SAGA/FETCH_USER_SHIFT_HISTORY', fetchUserShiftHistory)
+    yield takeLatest('SAGA/FETCH_USER_SHIFT_HISTORY', fetchUserShiftHistory);
 }
 
 export default shiftsSaga; 

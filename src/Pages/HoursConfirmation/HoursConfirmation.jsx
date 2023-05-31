@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import EditTable from "../../components/EditTable/EditTable";
 
-function ShiftConfirmation() {
+function HoursConfirmation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -49,4 +49,4 @@ function ShiftConfirmation() {
   );
 }
 
-export default ShiftConfirmation;
+export default HoursConfirmation;

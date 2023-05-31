@@ -54,7 +54,7 @@ function AddTips() {
       shift_id: shift.id,
     };
 
-    console.log('shift_tips', shift_tips)
+    console.log('shift_tips', shift_tips);
 
     dispatch({
       type: "SAGA/ADD_USER_TIPS",

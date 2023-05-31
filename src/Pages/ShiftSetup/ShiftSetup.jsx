@@ -10,6 +10,9 @@ function ShiftSetup() {
     dispatch({
       type: "SAGA/GET_OR_CREATE_SHIFT",
     });
+    dispatch({
+      type: "SAGA/GET_SHIFT_TIPS",
+    })
   }, []);
 
   const [cashTips, setCashTips] = useState(0);
@@ -17,6 +20,8 @@ function ShiftSetup() {
 
   const shift = useSelector((store) => store.shifts);
   const user = useSelector((store) => store.user);
+
+  console.log(shift);
 
   const onShiftSetup = (event) => {
     event.preventDefault();
@@ -28,7 +33,6 @@ function ShiftSetup() {
       runner_id: user.id,
     };
 
-    console.log(shiftCashTipsAndBBC)
 
     dispatch({
       type: "SAGA/UPDATE_SHIFT_BBC_CASH",

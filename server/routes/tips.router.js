@@ -21,8 +21,6 @@ router.get('/shift-tips/:id', rejectUnauthenticated, (req, res) => {
 
     const shift_id = req.params.id;
     const location_id = req.user.location_id;
-    console.log(shift_id);
-    console.log(location_id);
 
     sqlText = `SELECT "user".id as employee_id, "user".first_name, "user".last_name, shift_tips.id as shift_tips_id, shift_tips.time_in, shift_tips.time_out, shift_tips.break_time, shift_tips.hours_worked, shift_tips.total_tips,
     shift_tips.drawer_id, drawers.name as drawer_name, drawers.location_id, 
@@ -40,6 +38,21 @@ router.get('/shift-tips/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+router.get('/shift-tips/tip-out/:id', rejectUnauthenticated, (req, res) => {
+    const shift_id = req.params.id;
+    const location_id = req.user.location_id;
+
+    sqlQuery = `SELECT shift_tips.total_tips FROM shift_tips join shifts on shift_tips.shift_id=shifts.id where shift_tips.shift_id=${shift_id} and shifts.location_id=${location_id}`
+
+    pool.query(sqlQuery)
+    .then(results => {
+        console.log(results.rows);
+        res.send(results.rows)
+    }).catch(err => {
+        console.log('Error on shift tips tipout get query to DB', err);
+    })
+})
+
 router.post('/add-tip', rejectUnauthenticated, (req, res) => {
 
     const timeIn = req.body.timeIn;
@@ -50,9 +63,6 @@ router.post('/add-tip', rejectUnauthenticated, (req, res) => {
     const drawer_id = req.body.drawer_id;
     const employee_id = req.user.id;
     const shift_id = req.body.shift_id;
-
-    console.log(drawer_id);
-    console.log(shift_id);
 
     sqlText = `INSERT INTO shift_tips 
                 (time_in, time_out, break_time,  hours_worked, total_tips, drawer_id, employee_id, shift_id)
@@ -72,10 +82,10 @@ router.post('/add-tip', rejectUnauthenticated, (req, res) => {
 
 router.post('/shift-tips/add-shift-tips/:id', rejectUnauthenticated, (req, res) => {
     const shifts = req.body
-    let times_in = shifts.map(shift => shift.timeIn);
-    let times_out = shifts.map(shift => shift.timeOut);
-    let breakTimes = shifts.map(shift => shift.breakTime);
-    let hourTotals = shifts.map(shift => shift.totalHours);
+    let times_in = shifts.map(shift => shift.time_in);
+    let times_out = shifts.map(shift => shift.time_out);
+    let breakTimes = shifts.map(shift => shift.break_time);
+    let hourTotals = shifts.map(shift => shift.hours_worked);
     let employee_ids = shifts.map(shift => shift.employee_id);
     let shift_ids = shifts.map(shift => shift.shift_id);
 
@@ -102,13 +112,14 @@ router.post('/shift-tips/add-shift-tips/:id', rejectUnauthenticated, (req, res) 
 
 router.put('/shift-tip/edit-shift-tips/', rejectUnauthenticated, (req, res) => {
     const shifts = req.body;
-    let times_in = shifts.map(shift => shift.timeIn);
-    let times_out = shifts.map(shift => shift.timeOut);
-    let breakTimes = shifts.map(shift => shift.breakTime);
-    let hourTotals = shifts.map(shift => shift.totalHours);
-    let employee_ids = shifts.map(shift => shift.employeeId);
+    let times_in = shifts.map(shift => shift.time_in);
+    let times_out = shifts.map(shift => shift.time_out);
+    let breakTimes = shifts.map(shift => shift.break_time);
+    let hourTotals = shifts.map(shift => shift.hours_worked);
+    let employee_ids = shifts.map(shift => shift.employee_id);
     let shift_ids = shifts.map(shift => shift.shift_id);
     let shift_tips_ids = shifts.map(shift => shift.shift_tips_id);
+
 
     sqlQuery = `UPDATE shift_tips
                     SET time_in = temp.time_in,
@@ -128,7 +139,6 @@ router.put('/shift-tip/edit-shift-tips/', rejectUnauthenticated, (req, res) => {
                 WHERE shift_tips.id = temp.shift_tips_id;`
 
     sqlValues = [times_in, times_out, breakTimes, hourTotals, employee_ids, shift_ids, shift_tips_ids];
-    console.log(sqlValues)
 
     pool.query(sqlQuery,sqlValues)
     .then(() => res.sendStatus(200))
@@ -137,9 +147,56 @@ router.put('/shift-tip/edit-shift-tips/', rejectUnauthenticated, (req, res) => {
     })
 })
 
-router.delete('/shift_tip/delete-shift-tips', rejectUnauthenticated, (req, res) => {
+router.put('/shift-tip/edit-shift-tips-drawer/', rejectUnauthenticated, (req, res) => {
+    const drawers = req.body;
+    const drawer_ids = drawers.map(drawer => drawer.id);
+    const total_tips = drawers.map(drawer => drawer.charged_tips);
+    const shift_id = drawers[0].shift_id;
+    
+    const sqlQuery = `UPDATE shift_tips
+                        SET total_tips = temp.total_tips
+                        FROM (SELECT UNNEST($1::money[]) as total_tips,
+                                    UNNEST($2::integer[]) as drawer_id
+                        ) temp
+                        WHERE (shift_tips.drawer_id=temp.drawer_id AND shift_id=$3);`
+
+    sqlValues = [total_tips, drawer_ids, shift_id]
+    
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch(err => {
+        console.log('Failure to update shift tips drawers to db', err);
+    })
+})
+
+router.post('/shift-tip/add-shift-tips-drawer-only/', rejectUnauthenticated, (req, res) => {
+    const drawers = req.body;
+    const drawer_ids = drawers.map(drawer => drawer.id);
+    const total_tips = drawers.map(drawer => drawer.charged_tips);
+    const shift_id = drawers[0].shift_id;
+
+    const sqlQuery = `INSERT INTO shift_tips
+                        (total_tips, drawer_id, shift_id)
+                        VALUES
+                        (
+                            UNNEST($1::money[]),
+                            UNNEST($2::integer[]),
+                            $3
+                        );`
+    
+    const sqlValues = [total_tips, drawer_ids, shift_id];
+
+    console.log(sqlValues);
+
+    pool.query(sqlQuery, sqlValues)
+    .then(() => res.sendStatus(200))
+    .catch(err => {
+        console.log('Error posting drawer only shift tips to db', err);
+    })
+})
+
+router.delete('/shift-tip/delete-shift-tips', rejectUnauthenticated, (req, res) => {
     const shifts = req.body;
-    // const shift_tips_ids = shifts.map(shift => shift.shift_tips_id);
     let shift_tips_ids = shifts.map(shift => shift.shift_tips_id);
 
     sqlQuery = `DELETE FROM shift_tips WHERE (shift_tips.id) IN (

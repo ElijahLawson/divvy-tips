@@ -11,6 +11,7 @@ function ShiftHistory() {
   const shiftHistory = useSelector((store) => store.shiftHistory);
   const [shifts, setShifts] = useState([]);
 
+  console.log(shiftHistory);
   useEffect(() => {
     dispatch({
       type: "SAGA/FETCH_USER_SHIFT_HISTORY",

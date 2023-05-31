@@ -66,3 +66,5 @@ time_in: "08:00"
 time_out: "02:00"
 ​​​
 total_tips: "$276.00"
+
+okay i need to build a table that has all the 

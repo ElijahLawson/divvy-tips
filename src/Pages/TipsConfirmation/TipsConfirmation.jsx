@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import EditTipsTable from "../../components/EditTipsTable/EditTipsTable";
 function TipsConfirmation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,34 +36,11 @@ function TipsConfirmation() {
     <div>
       <div>
         <h2>Confirm / Edit Tips</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Drawer</th>
-              <th>Charged Tips</th>
-            </tr>
-          </thead>
-          <tbody>
-            {shiftTips.map((tips) => {
-              return (
-                <tr>
-                    <td>{tips.name}</td>
-                    <td>{tips.total_tips}</td>
-                  <td>
-                    <button>Edit</button>
-                  </td>
-                  <td>
-                    <button>Delete</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        
+        <EditTipsTable />
+
       </div>
-      <div>
-        <button onClick={onTipsConfirm}>Next</button>
-      </div>
+
     </div>
   );
 }

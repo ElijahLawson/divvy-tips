@@ -27,7 +27,6 @@ router.get('/', rejectUnauthenticated, async (req, res) => {
 
 router.get('/user-history', rejectUnauthenticated, (req, res) => {
     const user_id = req.user.id;
-    console.log(user_id);
     const sqlQuery = `SELECT shifts.date, shifts.hourly, shift_tips.hours_worked 
     FROM shift_tips JOIN shifts ON shift_tips.shift_id=shifts.id
     WHERE shift_tips.employee_id=${user_id}`;

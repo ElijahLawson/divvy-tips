@@ -19,7 +19,11 @@ function TipOutPage() {
   const [tipout, setTipout] = useState([]);
 
   const fetchData = () => {
-    dispatch({ type: "SAGA/GET_OR_CREATE_SHIFT" });
+
+    dispatch({
+      type: 'SAGA/FETCH_TIPOUT_SHIFT_TIPS',
+      payload: shift.id
+    })
     dispatch({ type: "SAGA/FETCH_USER_BAR" });
   };
 
@@ -30,6 +34,7 @@ function TipOutPage() {
   };
 
   const calculateTotalCash = () => {
+    console.log("🚀 ~ file: TipOutPage.jsx:18 ~ TipOutPage ~ shiftTips:", shiftTips)
     let chargedTips = shiftTips
       .map((tips) => Number(tips.total_tips.replace(/[^\d.]/g, "")))
       .reduce((accumulator, tips) => accumulator + tips, 0);
@@ -66,6 +71,9 @@ function TipOutPage() {
   };
 
   const runTheMoney = () => {
+
+
+
     const data = runCalculations();
     setData(data);
 
@@ -79,7 +87,7 @@ function TipOutPage() {
       payload: {
         hourly: data.hourly,
         shift_id: shift.id,
-      },
+      }
     });
 
     return setTipout(calculatedTipout);
@@ -119,5 +127,7 @@ function TipOutPage() {
     </div>
   );
 }
+
+//2540 - 254 - 
 
 export default TipOutPage;
