@@ -95,36 +95,35 @@ function TipOutPage() {
 
   return (
     <div>
-      <div>
-        <h3>Total Hours: {data.totalHours}</h3>
-        <h3>Hourly: {data.hourly}</h3>
-        <h3>Barback Cut: {data.barbackCut}</h3>
-
-        <button onClick={runTheMoney}>Run the Money!</button>
-        <table>
+      <div className="grid grid-cols-1 place-content-center">
+        <h3 className="text-center text-xl mt-4">Total Hours: {data.totalHours}</h3>
+        <h3 className="text-center text-xl mt-4">Hourly: {data.hourly}</h3>
+        <h3 className="text-center text-xl mt-4">Barback Cut: {data.barbackCut}</h3>
+        <button className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-auto mt-4 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800" onClick={runTheMoney}>Run the Money!</button>
+      </div>
+        <table className="m-4 text-gray-500 dark:text-gray-400">
           <thead>
             <tr>
-              <th>Bartender</th>
-              <th>Hours Worked</th>
-              <th>Tipout</th>
+              <th className="px-5 py-3 uppercase">Bartender</th>
+              <th className="px-5 py-3 uppercase">Hours Worked</th>
+              <th className="px-5 py-3 uppercase">Tipout</th>
             </tr>
           </thead>
           <tbody>
             {tipout.map((tips) => {
               return (
-                <tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 px-5 py-3">
                   <td>
                     {tips.first_name} {tips.last_name}
                   </td>
-                  <td>{tips.hours_worked}</td>
-                  <td>{tips.tipout}</td>
+                  <td className="text-center">{tips.hours_worked}</td>
+                  <td className="text-center">{tips.tipout}</td>
                 </tr>
               );
             })}
           </tbody>
         </table>
       </div>
-    </div>
   );
 }
 

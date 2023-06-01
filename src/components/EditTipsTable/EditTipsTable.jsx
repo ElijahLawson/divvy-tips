@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
 import Popup from "reactjs-popup";
+import '../EditTipsTable/EditTipsTable.css'
 
 // WARNING TO ALL WHO SET FOOT HERE, ONLY TARAVANGIAN ON HIS BEST DAY COULD DECIPHER WHAT IS HAPPENING HERE. TREAD WITH CARE.
 
@@ -38,14 +39,6 @@ function EditTipsTable(props) {
   const [chargedTipsInput, setChargedTipsInput] = useState([]);
 
   const [open, setOpen] = useState(false);
-
-  console.log(data);
-  console.log(updateData);
-  console.log(addData);
-  console.log(newData);
-  console.log(drawers);
-
-  console.log(shift_tips)
 
   const parseDrawers = () => {
     for (let drawer of drawers) {
@@ -142,29 +135,29 @@ function EditTipsTable(props) {
 
   return (
     <div>
-      <table>
+      <table className="w-full text-md text-gray-500 dark:text-gray-400">
         <thead>
           <tr>
-            <th>Drawer</th>
-            <th>Charged Tips</th>
+            <th className="px-6 py-3 uppercase">Drawer</th>
+            <th className="px-6 py-3 uppercase">Charged Tips</th>
           </tr>
         </thead>
         <tbody>
           {newData.map((drawer) => {
             return (
-              <tr>
-                <td>{drawer.name}</td>
-                <td>{drawer.charged_tips}</td>
-                <td>
-                  <button onClick={() => handleNewEdit(drawer.id, drawer.name, drawer.shift_id, drawer.location_id)}>Edit</button>
+              <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+                <td className="text-center">{drawer.name}</td>
+                <td className="text-center">{drawer.charged_tips}</td>
+                <td className="pl-3 py-1">
+                  <button className="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 mb-1 mt-1 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900" onClick={() => handleNewEdit(drawer.id, drawer.name, drawer.shift_id, drawer.location_id)}>Edit</button>
                   <Popup open={open} closeOnDocumentClick>
                     <div>
-                      <h1>Drawer Tips Edit</h1>
                       <form onSubmit={(event) => handleConfirm(event)}>
-                        <h3>{drawer.name}</h3>
-                        <label>
+                        <h3 className="text-center text-2xl font-medium text-gray-900 dark:text-white">{drawer.name}</h3>
+                        <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white mt-5">
                           Charged Tips:
                           <input
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             type="number"
                             name="chargedTips"
                             value={chargedTipsInput}
@@ -174,8 +167,8 @@ function EditTipsTable(props) {
                             }
                           />
                         </label>
-                        <div>
-                          <button type="submit">Confirm</button>
+                        <div className="flex justify-center mt-10">
+                          <button className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800" type="submit">Confirm</button>
                         </div>
                       </form>
                     </div>
@@ -186,7 +179,11 @@ function EditTipsTable(props) {
           })}
         </tbody>
       </table>
-      <button onClick={onConfirm}>Next</button>
+      <div className="flex justify-end mt-6">
+        <button className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800" onClick={onConfirm}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg></button>
+      </div>
     </div>
   );
 }

@@ -35,7 +35,7 @@ function TipsConfirmation() {
   return (
     <div>
       <div>
-        <h2>Confirm / Edit Tips</h2>
+        <h2 className="text-center mt-5 text-3xl mb-4">Confirm / Edit Tips</h2>
         
         <EditTipsTable />
 

@@ -23,7 +23,7 @@ function* fetchMinimizedShiftTips(action) {
 function* fetchShiftTips(action) {
     try{
         const response = yield axios.get(`/api/tips/shift-tips/${action.payload}`)
-        console.log(response.data);
+        console.log(response.data); 
         yield put({ type : 'SET_SHIFT_TIPS', payload: response.data })
         
     } catch (error) {

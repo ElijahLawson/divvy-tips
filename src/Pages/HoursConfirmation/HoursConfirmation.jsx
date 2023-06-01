@@ -39,7 +39,7 @@ function HoursConfirmation() {
   return (
     <div>
       <div>
-        <h2>Confirm / Edit Hours</h2>
+        <h2 className="text-center mt-5 text-3xl mb-4">Confirm / Edit Hours</h2>
         
         <EditTable tableConfig={tableConfig}/>
 
