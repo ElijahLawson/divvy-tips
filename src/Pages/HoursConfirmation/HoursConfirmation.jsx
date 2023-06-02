@@ -7,14 +7,10 @@ function HoursConfirmation() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
+  //Redux Stores
   const shift_tips = useSelector((store) => store.shiftTips);
 
-  console.log(shift_tips);
-
+  //Config data to pass to the hours editTable as a prop
   const tableConfig = {
     data: shift_tips,
     defaultState: [{ id: "", bartender: "", hours_worked: ""}],
@@ -24,12 +20,14 @@ function HoursConfirmation() {
     sagaRoute: ''
   }
 
+  //Looks like I don't think I'll use this but I won't take it out quite yet.
   const fetchData = () => {
     dispatch({
       type: "SAGA/FETCH_SHIFT_TIPS"
     })
   };
 
+  //Looks like I don't think I'll use this but I won't take it out quite yet.
   const onHoursConfirm = (event) => {
     event.preventDefault();
 

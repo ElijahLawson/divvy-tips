@@ -11,15 +11,18 @@ function EditTipsTable(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //Redux Stores
   const drawers = useSelector(store => store.drawers);
   const shiftDrawers = useSelector(store => store.shiftDrawers);
   const shift_tips = useSelector((store) => store.shiftTips);
   const shift = useSelector(store => store.shifts);
 
+  //These are gonna be our running data objects that will be used to either fill the table rows or push to server for db updates
   const [data, setData] = useState([]);
   const [addData, setAddData] = useState([]);
   const [updateData, setUpdateData] = useState([]);
 
+  //UseMemo is used here as a fix to redux not updating on refresh. Keeps everything from being one step behind, statewise
   const newData = useMemo(() => {
     const copiedData = [...data];
     for (const index in copiedData) {
@@ -32,14 +35,17 @@ function EditTipsTable(props) {
     return copiedData;
   }, [data, updateData]);
 
+  //React State used across the table for edits and rendering table rows
   const [drawerId, setDrawerId] = useState(0);
   const [drawerName, setDrawerName] = useState('');
   const [locationId, setLocationId] = useState(0);
   const [shiftId, setShiftId] = useState(0);
   const [chargedTipsInput, setChargedTipsInput] = useState([]);
 
+  //React State used for edit popup functionality
   const [open, setOpen] = useState(false);
 
+  //Parse the data from the redux store to better work with this functionality 
   const parseDrawers = () => {
     for (let drawer of drawers) {
       for (let shift_tip of shift_tips) {
@@ -56,6 +62,7 @@ function EditTipsTable(props) {
     return drawers;
   }
 
+  //Function to fetch data from the server -> runs in useEffect
   const fetchData = () => {
 
     dispatch({
@@ -67,10 +74,14 @@ function EditTipsTable(props) {
     setData([...formattedData]);
   };
 
+  //useEffect is grabbing our data on page load
   useEffect(() => {
     fetchData();
   }, []);
 
+  //When we start a new edit, theres some base information that will be set to state.
+  //This ensures the right drawer and shift id is selected and also that the
+  //popup has the previous information within its inputs.
   const handleNewEdit = (id, name, shift_id, location_id) => {
     setDrawerId(id);
     setDrawerName(name);
@@ -80,6 +91,8 @@ function EditTipsTable(props) {
     setOpen((o) => !o);
   };
 
+  //editRow builds a new object of shift_tips information, then adds it to the updateData array.
+  //TODO: Change the base functionality to use one json object instead of array of objects (big maybe)
   const editRow = () => {
     const dataToEdit = {
       id: drawerId,
@@ -98,11 +111,15 @@ function EditTipsTable(props) {
     editRow();
   };
 
+  //TODO: need to use this to reformat the table so the numbers look good
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
 
+  //onConfirm first filters out the edited data
+  //then filters out any added drawers
+  //then dispatchs to the server the necessary data to make those changes
   const onConfirm = () => {
     //okay so on confirm just make shift_tips with just the drawer id and the total_tips
     const filteredEdits = newData.filter(editedDrawer => {
@@ -126,9 +143,6 @@ function EditTipsTable(props) {
         payload: addedDrawers
       })
     }
-
-    console.log(filteredEdits);
-    console.log(addedDrawers);
     
     navigate("/tip-out");
   };

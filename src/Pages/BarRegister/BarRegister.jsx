@@ -41,7 +41,7 @@ function BarRegister() {
       <form>
         <div>
           <label>
-            Bar Name:
+            <span>Bar Name:</span>
             <input
               type="text"
               name="barName"
@@ -53,7 +53,7 @@ function BarRegister() {
         </div>
         <div>
           <label>
-            City:
+            <span>City:</span>
             <input
               type="text"
               name="city"
@@ -65,7 +65,7 @@ function BarRegister() {
         </div>
         <div>
           <label>
-            State:
+            <span>State:</span>
             <input
               type="text"
               name="barname"

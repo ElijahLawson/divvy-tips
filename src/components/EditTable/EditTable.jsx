@@ -11,11 +11,13 @@ function EditTable(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //These are gonna be our running data objects that will be used to either fill the table rows or push to server for db updates
   const [data, setData] = useState(props.tableConfig.defaultState);
   const [updateData, setUpdateData] = useState([]);
   const [deleteData, setDeleteData] = useState([]);
   const [addData, setAddData] = useState([]);
 
+  //UseMemo is used here as a fix to redux not updating on refresh. Keeps everything from being one step behind, statewise
   const newData = useMemo(() => {
     let copiedData = [...data];
     for (const index in copiedData) {
@@ -40,9 +42,11 @@ function EditTable(props) {
     return copiedData;
   }, [data, updateData, addData, deleteData]);
 
+  //Redux stores
   const bartenders = useSelector((store) => store.bartenders);
   const shift = useSelector((store) => store.shifts);
 
+  //React State used across the table for edits and rendering table rows
   const [bartenderSelected, setBartenderSelected] = useState('');
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
@@ -52,21 +56,27 @@ function EditTable(props) {
   const [employeeId, setEmployeeId] = useState(0);
   const [shiftTipsId, setShiftTipsId] = useState(0);
 
+  //React State used for edit/add popup functionality
   const [isAdding, setIsAdding] = useState(false);
   const [open, setOpen] = useState(false);
 
+  //useEffect is grabbing our data on page load
   useEffect(() => {
     fetchData();
   }, [updateData]);
 
+  //Function to dispatch to the server
   const fetchData = () => {
     dispatch({
       type: "SAGA/FETCH_BAR_BARTENDERS",
     });
 
+    //Between the two tables, I used two different methods of data setting. 
+    //This one is using a config prop to get everything set
     setData(props.tableConfig.data);
   };
 
+  //resetState function just resets all the necessary state. Used when an action is completed like popup confirm
   const resetState = () => {
     setBartenderSelected("");
     setFirstNameInput("");
@@ -77,6 +87,8 @@ function EditTable(props) {
     setEmployeeId(0);
   };
 
+  //Function using Luxon library to calculate the total hours. 
+  //Gets a little fancy with bar shifts usually going past midnight and into the new day.
   const calculateTotalHours = () => {
     const timeIn = DateTime.fromISO(timeInInput);
     const timeOut = DateTime.fromISO(timeOutInput);
@@ -93,6 +105,9 @@ function EditTable(props) {
     return totalHours;
   };
 
+  //When we start a new edit, theres some base information that will be set to state.
+  //This ensures the right employee and shift id is selected and also that the
+  //popup has the previous information within its inputs.
   const handleNewEdit = (shift) => {
     setEmployeeId(shift.employee_id);
     setShiftTipsId(shift.shift_tips_id);
@@ -105,6 +120,8 @@ function EditTable(props) {
     setOpen((o) => !o);
   };
 
+  //editRow builds a new object of shift_tips information, then adds it to the updateData array.
+  //TODO: Change the base functionality to use one json object instead of array of objects (big maybe)
   const editRow = () => {
     const totalHours = calculateTotalHours();
     const dataToEdit = {
@@ -124,16 +141,14 @@ function EditTable(props) {
     setOpen((o) => !o);
   };
 
+  //handleDeleteRow filters out the intended row to delete from the newData array (which is used to populate the data in the table)
   const handleDeleteRow = (id) => {
-    console.log(id);
-    console.log(newData);
-
     const dataToDelete = newData.filter((shift) => shift.employee_id === id);
     setDeleteData([...deleteData, dataToDelete[0]]);
-    console.log(deleteData);
     resetState();
   };
 
+  //handleStartAddRow ensures the necessary states are set correctly for an add
   const handleStartAddRow = () => {
     setFirstNameInput("");
     setLastNameInput("");
@@ -141,9 +156,10 @@ function EditTable(props) {
     setOpen((o) => !o);
   };
 
+  //addRow runs the calculateTotalHours
+  //then builds an object that will be passed to the addData object array
   const addRow = () => {
     const totalHours = calculateTotalHours();
-    console.log(bartenderSelected);
     let bartender = 0;
     if (bartenderSelected === '') {
       setBartenderSelected(bartenders[0].id)
@@ -152,8 +168,6 @@ function EditTable(props) {
     bartender = bartenders.filter(
       (bartender) => bartender.id === Number(bartenderSelected)
     )[0];
-
-    console.log(bartender);
 
     const dataToAdd = {
       first_name: bartender.first_name,
@@ -171,12 +185,14 @@ function EditTable(props) {
     setOpen((o) => !o);
   };
 
+  //handleConfirm has a quick ternary statement to determine if editRow or addRow function needs to be ran
   const handleConfirm = (event) => {
     event.preventDefault();
 
     !isAdding ? editRow() : addRow();
   };
 
+  //ensureDeletionsAreRemoved filters out the deleteData from the updateData
   const ensureDeletionsAreRemoved = () => {
     let deletedIds = deleteData.map((shift) => shift.employee_id);
     let filteredEdits = updateData.filter((shift) => {
@@ -185,6 +201,7 @@ function EditTable(props) {
     setUpdateData(filteredEdits);
   };
 
+  //OnConfirm runs ensureDeletetionsAreRemoved then makes each necessary dispatch to the server to save the changes made.
   const onConfirm = () => {
     ensureDeletionsAreRemoved();
 

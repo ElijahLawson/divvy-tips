@@ -17,13 +17,6 @@ function TipsConfirmation() {
     dispatch({
       type: "SAGA/GET_OR_CREATE_SHIFT",
     });
-
-    // console.log(shift.id);
-
-    // dispatch({
-    //     type: 'SAGA/FETCH_SHIFT_TIPS',
-    //     payload: shift.id
-    // })
   };
 
   const onTipsConfirm = (event) => {

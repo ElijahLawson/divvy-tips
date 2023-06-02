@@ -27,6 +27,7 @@ router.get('/user-bar', (req, res) => {
     })
 })
 
+
 router.get('/all-bars', (req, res) => {
     pool.query('SELECT * FROM location')
     .then((results) => {

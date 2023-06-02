@@ -5,6 +5,7 @@ const {
   } = require('../modules/authentication-middleware');
 const router = express.Router();
 
+//GET route to retrieve all of the USERS shift_tips data
 router.get('/user-tips/:id', rejectUnauthenticated, (req, res) => {
     const user_id = req.params.id;
 
@@ -17,8 +18,9 @@ router.get('/user-tips/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+//GET route to retrieve specific data for a shift - used in the edit hours table component
+//TODO:: CONVERT STRING INTERPOLATION TO $1,$2 METHOD FOR SQLQUERY
 router.get('/shift-tips/:id', rejectUnauthenticated, (req, res) => {
-
     const shift_id = req.params.id;
     const location_id = req.user.location_id;
 
@@ -38,6 +40,7 @@ router.get('/shift-tips/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+//GET route to retrieve just the shift_tips total_tips amount from the shift_tips table
 router.get('/shift-tips/tip-out/:id', rejectUnauthenticated, (req, res) => {
     const shift_id = req.params.id;
     const location_id = req.user.location_id;
@@ -53,6 +56,7 @@ router.get('/shift-tips/tip-out/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+//POST route to shift_tips table to add a row -> pinged from Add Tips component
 router.post('/add-tip', rejectUnauthenticated, (req, res) => {
 
     const timeIn = req.body.timeIn;
@@ -80,14 +84,17 @@ router.post('/add-tip', rejectUnauthenticated, (req, res) => {
     })
 });
 
+//POST request with larger array of objects from the edit hours table component
+//The array of objects is converted to arrays of column data 
+//and then uses UNNEST to parallel insert into the table
 router.post('/shift-tips/add-shift-tips/:id', rejectUnauthenticated, (req, res) => {
-    const shifts = req.body
-    let times_in = shifts.map(shift => shift.time_in);
-    let times_out = shifts.map(shift => shift.time_out);
-    let breakTimes = shifts.map(shift => shift.break_time);
-    let hourTotals = shifts.map(shift => shift.hours_worked);
-    let employee_ids = shifts.map(shift => shift.employee_id);
-    let shift_ids = shifts.map(shift => shift.shift_id);
+
+    let times_in = req.body.map(shift => shift.time_in);
+    let times_out = req.body.map(shift => shift.time_out);
+    let breakTimes = req.body.map(shift => shift.break_time);
+    let hourTotals = req.body.map(shift => shift.hours_worked);
+    let employee_ids = req.body.map(shift => shift.employee_id);
+    let shift_ids = req.body.map(shift => shift.shift_id);
 
     sqlQuery = `INSERT INTO shift_tips
                 (time_in, time_out, break_time, hours_worked, employee_id, shift_id)
@@ -111,15 +118,18 @@ router.post('/shift-tips/add-shift-tips/:id', rejectUnauthenticated, (req, res) 
 })
 
 router.put('/shift-tip/edit-shift-tips/', rejectUnauthenticated, (req, res) => {
-    const shifts = req.body;
-    let times_in = shifts.map(shift => shift.time_in);
-    let times_out = shifts.map(shift => shift.time_out);
-    let breakTimes = shifts.map(shift => shift.break_time);
-    let hourTotals = shifts.map(shift => shift.hours_worked);
-    let employee_ids = shifts.map(shift => shift.employee_id);
-    let shift_ids = shifts.map(shift => shift.shift_id);
-    let shift_tips_ids = shifts.map(shift => shift.shift_tips_id);
 
+    let times_in = req.body.map(shift => shift.time_in);
+    let times_out = req.body.map(shift => shift.time_out);
+    let breakTimes = req.body.map(shift => shift.break_time);
+    let hourTotals = req.body.map(shift => shift.hours_worked);
+    let employee_ids = req.body.map(shift => shift.employee_id);
+    let shift_ids = req.body.map(shift => shift.shift_id);
+    let shift_tips_ids = req.body.map(shift => shift.shift_tips_id);
+
+    `UPDATE fish
+        SET month
+        WHERE `
 
     sqlQuery = `UPDATE shift_tips
                     SET time_in = temp.time_in,
@@ -147,6 +157,7 @@ router.put('/shift-tip/edit-shift-tips/', rejectUnauthenticated, (req, res) => {
     })
 })
 
+//PUT request to update rows using the same UNNEST principle -> used by the edit tips table component
 router.put('/shift-tip/edit-shift-tips-drawer/', rejectUnauthenticated, (req, res) => {
     const drawers = req.body;
     const drawer_ids = drawers.map(drawer => drawer.id);
@@ -169,6 +180,7 @@ router.put('/shift-tip/edit-shift-tips-drawer/', rejectUnauthenticated, (req, re
     })
 })
 
+//POST request to update rows using the same UNNEST principle -> used by the edit tips table component
 router.post('/shift-tip/add-shift-tips-drawer-only/', rejectUnauthenticated, (req, res) => {
     const drawers = req.body;
     const drawer_ids = drawers.map(drawer => drawer.id);
@@ -195,9 +207,10 @@ router.post('/shift-tip/add-shift-tips-drawer-only/', rejectUnauthenticated, (re
     })
 })
 
+//Delete Request for rows on the shift_tips table -> used by Edit Hours Table Component
 router.delete('/shift-tip/delete-shift-tips', rejectUnauthenticated, (req, res) => {
-    const shifts = req.body;
-    let shift_tips_ids = shifts.map(shift => shift.shift_tips_id);
+
+    let shift_tips_ids = req.body.map(shift => shift.shift_tips_id);
 
     sqlQuery = `DELETE FROM shift_tips WHERE (shift_tips.id) IN (
                 SELECT * FROM UNNEST($1::integer[]));
