@@ -1,0 +1,17 @@
+"filename", "language", "JavaScript JSX", "CSS", "JavaScript", "comment", "blank", "total"
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/bar.router.js", "JavaScript", 0, 0, 0, 0, 1, 1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/server/routes/tips.router.js", "JavaScript", 0, 0, 0, 11, 2, 13
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/AddTips/AddTips.jsx", "JavaScript JSX", 6, 0, 0, 0, 1, 7
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/AddTipsConfirmation/AddTipsConfirmation.jsx", "JavaScript JSX", 5, 0, 0, 0, 2, 7
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/HoursConfirmation/HoursConfirmation.jsx", "JavaScript JSX", -1, 0, 0, 1, -2, -2
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/LandingPage/LandingPage.jsx", "JavaScript JSX", -5, 0, 0, 16, -2, 9
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/LoginPage/LoginPage.jsx", "JavaScript JSX", 1, 0, 0, 0, 0, 1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/ShiftSetup/ShiftSetup.jsx", "JavaScript JSX", 6, 0, 0, 0, 0, 6
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/TipOutPage/TipOutPage.jsx", "JavaScript JSX", 0, 0, 0, 0, -1, -1
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/TipsConfirmation/TipsConfirmation.jsx", "JavaScript JSX", 0, 0, 0, -5, -2, -7
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/Pages/UserPage/UserPage.jsx", "JavaScript JSX", 5, 0, 0, 0, -2, 3
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/EditTable/EditTable.css", "CSS", 0, 9, 0, 0, 0, 9
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/EditTable/EditTable.jsx", "JavaScript JSX", -5, 0, 0, 24, -3, 16
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/EditTipsTable/EditTipsTable.css", "CSS", 0, 9, 0, 0, 0, 9
+"/Users/elijahlawson/Desktop/Prime/divvy-tips/src/components/EditTipsTable/EditTipsTable.jsx", "JavaScript JSX", -3, 0, 0, 17, -3, 11
+"Total", "-", 9, 18, 0, 64, -9, 82

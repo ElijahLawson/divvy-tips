@@ -19,6 +19,7 @@ import HoursConfirmation from "../../Pages/HoursConfirmation/HoursConfirmation";
 import TipsConfirmation from "../../Pages/TipsConfirmation/TipsConfirmation";
 import TipOutPage from "../../Pages/TipOutPage/TipOutPage";
 import ShiftHistory from "../../Pages/ShiftHistory/ShiftHistory";
+import About from "../../Pages/About/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/about" element={<About />} />
           <Route
             path="/home"
             element={user.id ? <Navigate to="/user" /> : <LandingPage />}

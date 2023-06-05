@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { DateTime } from "luxon";
 import Popup from "reactjs-popup";
-import '../EditTipsTable/EditTipsTable.css'
+import './EditTipsTable.css';
 
 // WARNING TO ALL WHO SET FOOT HERE, ONLY TARAVANGIAN ON HIS BEST DAY COULD DECIPHER WHAT IS HAPPENING HERE. TREAD WITH CARE.
 
